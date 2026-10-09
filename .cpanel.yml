@@ -1,0 +1,8 @@
+---
+# Déploiement automatique cPanel : copie le site vitrine (dossier site/) dans public_html.
+# Dans cPanel > Git Version Control > Manage > Pull or Deploy > "Deploy HEAD Commit".
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R site/. $DEPLOYPATH
