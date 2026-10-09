@@ -325,6 +325,9 @@ a.chip{text-decoration:none;transition:border-color var(--d1) var(--ease),color 
 .form input:focus,.form select:focus,.form textarea:focus{border-color:var(--red);box-shadow:0 0 0 4px var(--red-soft);outline:none}
 .form textarea{min-height:130px;resize:vertical}
 .form .hint{font-size:.84rem;color:var(--muted)}
+.form .err{font-size:.88rem;color:var(--red);font-weight:700}
+.form .err:empty{display:none}
+.form .consent{font-size:.8rem;color:var(--muted);line-height:1.45}
 .form .ok{display:none;padding:16px 18px;background:var(--red-soft);border:1.5px solid var(--red-line);color:var(--fg);border-radius:var(--radius);font-size:.95rem}
 .form.sent .ok{display:block;animation:pop var(--d2) var(--ease)}
 .form.sent .fields{display:none}
@@ -903,9 +906,10 @@ footer{padding-block:clamp(56px,6vw,80px) 28px}
             </select>
           </label>
           <div><button class="btn btn-red" type="submit">Me prévenir</button></div>
+            <p class="consent">En envoyant ce formulaire, vous acceptez qu'InnoVibe utilise vos coordonnées pour vous répondre et vous informer de ses activités. Elles ne sont jamais transmises à des tiers.</p>
           <p class="hint">Vos coordonnées servent uniquement à vous informer de nos sessions.</p>
         </div>
-        <div class="ok" role="status">Merci ! Nous vous préviendrons dès l'ouverture des inscriptions. <em>(Maquette : ce formulaire n'est pas encore connecté.)</em></div>
+        <div class="ok" role="status">Merci ! Nous vous préviendrons dès l'ouverture des inscriptions.</div>
       </form>
     </div>
   </div>
@@ -1040,8 +1044,9 @@ footer{padding-block:clamp(56px,6vw,80px) 28px}
             </label>
             <label>Message<textarea id="c-msg" name="message" placeholder="Décrivez votre besoin…"></textarea></label>
             <div><button class="btn btn-red" type="submit">Envoyer le message</button></div>
+            <p class="consent">En envoyant ce formulaire, vous acceptez qu'InnoVibe utilise vos coordonnées pour vous répondre et vous informer de ses activités. Elles ne sont jamais transmises à des tiers.</p>
           </div>
-          <div class="ok" role="status">Merci, votre message est bien noté. <em>(Maquette : ce formulaire n'est pas encore connecté.)</em></div>
+          <div class="ok" role="status">Merci, votre message est bien noté.</div>
         </form>
       </div>
     </div>
@@ -1093,6 +1098,7 @@ footer{padding-block:clamp(56px,6vw,80px) 28px}
               </select>
             </label>
             <button class="btn btn-red" type="submit" style="justify-content:center">Recevoir mon accès</button>
+            <p class="consent">En envoyant ce formulaire, vous acceptez qu'InnoVibe utilise vos coordonnées pour vous répondre et vous informer de ses activités. Elles ne sont jamais transmises à des tiers.</p>
             <p class="hint" style="text-align:center">Vos coordonnées servent uniquement à vous remettre votre accès.</p>
           </div>
           <div class="ok" role="status">Merci ! Vous recevrez votre accès dès l'ouverture de l'espace apprenant.</div>
@@ -1199,8 +1205,9 @@ footer{padding-block:clamp(56px,6vw,80px) 28px}
             </select>
           </label>
           <div><button class="btn btn-red" type="submit">Me prévenir de l'ouverture</button></div>
+            <p class="consent">En envoyant ce formulaire, vous acceptez qu'InnoVibe utilise vos coordonnées pour vous répondre et vous informer de ses activités. Elles ne sont jamais transmises à des tiers.</p>
         </div>
-        <div class="ok" role="status">Merci ! Vous serez parmi les premiers informés. <em>(Maquette : ce formulaire n'est pas encore connecté.)</em></div>
+        <div class="ok" role="status">Merci ! Vous serez parmi les premiers informés.</div>
       </form>
     </div>
   </div>
@@ -1561,9 +1568,32 @@ footer{padding-block:clamp(56px,6vw,80px) 28px}
   window.addEventListener('hashchange', function(){ safeRoute(false); });
   safeRoute(true);
 
-  /* ---------- Forms (maquette : non connectés) ---------- */
+  /* ---------- Formulaires : envoi vers contact.php (réception à Contact@innovibe.cd) ---------- */
   document.querySelectorAll('form[data-form]').forEach(function(f){
-    f.addEventListener('submit', function(e){ e.preventDefault(); f.classList.add('sent'); });
+    // champ piège (invisible), horodatage et nom du formulaire
+    var hp = document.createElement('input'); hp.type='text'; hp.name='website'; hp.tabIndex=-1; hp.autocomplete='off'; hp.setAttribute('aria-hidden','true');
+    hp.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0;';
+    f.appendChild(hp);
+    var t = document.createElement('input'); t.type='hidden'; t.name='t'; t.value=String(Date.now()); f.appendChild(t);
+    var fn = document.createElement('input'); fn.type='hidden'; fn.name='form'; fn.value=f.getAttribute('data-form'); f.appendChild(fn);
+    var err = document.createElement('p'); err.className='err'; err.setAttribute('role','alert'); f.appendChild(err);
+    f.addEventListener('submit', function(e){
+      e.preventDefault(); err.textContent='';
+      var nom = (f.querySelector('[name="nom"]')||{}).value||'';
+      var joignable = ['tel','email','contact'].some(function(k){ var el=f.querySelector('[name="'+k+'"]'); return el && el.value.trim(); });
+      if (!nom.trim() || !joignable) { err.textContent = 'Indiquez au moins votre nom et un moyen de vous joindre (téléphone ou e-mail).'; return; }
+      var btn = f.querySelector('button[type="submit"]'); var label = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Envoi en cours…'; }
+      var fd = new FormData(f);
+      fetch('contact.php', {method:'POST', body:fd, credentials:'same-origin'})
+        .then(function(r){ return r.json().catch(function(){ return {ok:false}; }); })
+        .then(function(j){
+          if (j && j.ok) { f.classList.add('sent'); }
+          else { err.textContent = (j && j.message) || 'L’envoi a échoué. Écrivez-nous directement à Contact@innovibe.cd.'; }
+        })
+        .catch(function(){ err.textContent = 'Impossible d’envoyer pour le moment. Écrivez-nous directement à Contact@innovibe.cd.'; })
+        .finally(function(){ if (btn) { btn.disabled = false; btn.textContent = label; } });
+    });
   });
 
   /* ---------- Copy buttons ---------- */
