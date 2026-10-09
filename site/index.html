@@ -1076,20 +1076,28 @@ footer{padding-block:clamp(56px,6vw,80px) 28px}
         <div class="gate-head">
           <img class="logo-dark" src="img/logo.png" alt="InnoVibe" width="330" height="144">
           <img class="logo-light" src="img/logo_light.png" alt="InnoVibe" width="330" height="144">
-          <h3>Connexion à l'espace apprenant</h3>
-          <p class="gate-preview"><span class="gem"></span>Aperçu de la future page de connexion. La connexion sera activée à l'ouverture de la plateforme : ne saisissez pas de vrai mot de passe ici.</p>
+          <h3>Recevoir mon accès à l'ouverture</h3>
+          <p class="gate-preview"><span class="gem"></span>La plateforme est en préparation. Laissez vos coordonnées : nous vous enverrons votre accès et la marche à suivre dès l'ouverture.</p>
         </div>
-        <form class="form" data-form="login" novalidate>
+        <form class="form" data-form="elearning" novalidate>
           <div class="fields stack" style="gap:14px">
-            <label>Adresse e-mail ou numéro de téléphone<input type="text" id="l-id" name="identifiant" autocomplete="username" placeholder="vous@exemple.cd ou +243 …"></label>
-            <label>Mot de passe<input type="password" id="l-pw" name="motdepasse" autocomplete="current-password" placeholder="••••••••"></label>
-            <div class="gate-row"><label class="check"><input type="checkbox" id="l-rem" name="rester"> Rester connecté</label><a href="#espace" class="gate-link">Mot de passe oublié ?</a></div>
-            <button class="btn btn-red" type="submit" style="justify-content:center">Se connecter</button>
-            <p class="hint" style="text-align:center">Pas encore de compte ? <a href="#espace" class="gate-link">Créer un compte</a></p>
+            <label>Nom complet<input type="text" id="l-nom" name="nom" autocomplete="name" placeholder="Votre nom"></label>
+            <label>Téléphone / WhatsApp<input type="tel" id="l-tel" name="tel" autocomplete="tel" placeholder="+243 …"></label>
+            <label>Adresse e-mail<input type="email" id="l-mail" name="email" autocomplete="email" placeholder="vous@exemple.cd"></label>
+            <label>Ce qui vous intéresse
+              <select id="l-type" name="type">
+                <option>Formations en ligne de l'Academy</option>
+                <option>Accompagnement privé en ligne</option>
+                <option>Masterclass et ateliers en ligne (Coaching)</option>
+                <option>Je suis déjà bénéficiaire InnoVibe</option>
+              </select>
+            </label>
+            <button class="btn btn-red" type="submit" style="justify-content:center">Recevoir mon accès</button>
+            <p class="hint" style="text-align:center">Vos coordonnées servent uniquement à vous remettre votre accès.</p>
           </div>
-          <div class="ok" role="status">La plateforme e-learning ouvrira prochainement : la connexion sera activée à ce moment-là. <em>(Maquette : ce formulaire n'est pas connecté.)</em></div>
+          <div class="ok" role="status">Merci ! Vous recevrez votre accès dès l'ouverture de l'espace apprenant.</div>
         </form>
-        <p class="gate-note">Vos identifiants ne sont jamais partagés. Connexion sécurisée dès l'ouverture de la plateforme.</p>
+        <p class="gate-note">Déjà bénéficiaire d'une formation en présentiel ? Votre équipe InnoVibe vous remettra directement vos accès.</p>
       </div>
     </div>
   </div>

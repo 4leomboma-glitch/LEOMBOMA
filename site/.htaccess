@@ -1,6 +1,7 @@
 # InnoVibe — réglages serveur (Apache / cPanel)
 Options -Indexes
 DirectoryIndex index.html
+ServerSignature Off
 
 # Forcer HTTPS et www.innovibe.cd -> innovibe.cd
 RewriteEngine On
@@ -9,12 +10,22 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.innovibe\.cd$ [NC]
 RewriteRule ^ https://innovibe.cd%{REQUEST_URI} [L,R=301]
 
+# Interdire l'accès aux fichiers cachés et aux fichiers de configuration
+<FilesMatch "^\.|\.(yml|yaml|md|json|log|bak|sql)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^\.htaccess$">
+  Require all denied
+</FilesMatch>
+
 <IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
-  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+  Header unset X-Powered-By
 </IfModule>
 
 <IfModule mod_expires.c>
