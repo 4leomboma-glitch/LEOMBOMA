@@ -1,0 +1,1578 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>InnoVibe</title>
+<meta name="description" content="InnoVibe — entreprise congolaise d'innovation, d'entrepreneuriat et de développement des compétences. Formation, coaching, conseil stratégique et mise en relation à Kinshasa.">
+<link rel="icon" type="image/png" href="img/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+/* Concept : « le prisme ». Un seul geste fort — le logo facetté qui s'assemble, respire et capte la lumière —
+   et tout le reste discipliné : typographie forte alignée à gauche, blocs rouge/noir hérités des affiches,
+   arêtes diagonales rappelant les facettes, mouvements rares et cohérents (une seule famille d'easing). */
+:root{
+  --red:#a70036; --red-deep:#7a0027; --red-bright:#d4164f; --red-soft:#f7e4ea; --red-line:#e9bccb;
+  --ink:#111111; --ink-2:#1a1718; --on-ink:#ffffff; --on-ink-muted:#c9bfc3; --on-ink-faint:rgba(255,255,255,.14);
+  --paper:#ffffff; --surface:#f7f3f4; --surface-2:#eee7e9; --line:#e4dadd;
+  --fg:#151213; --muted:#6d6266; --on-red:#ffffff;
+  --shadow:0 24px 48px -28px rgba(17,17,17,.4);
+  --logo-dark:inline-block; --logo-light:none;
+  --display:'Syne','Avenir Next','Segoe UI',Arial,sans-serif;
+  --body:'Manrope','Segoe UI',Helvetica,Arial,sans-serif;
+  --serif:'Times New Roman',Times,'Liberation Serif',Georgia,serif;
+  --radius:4px; --gutter:clamp(16px,4.5vw,44px); --maxw:1180px;
+  --ease:cubic-bezier(.16,1,.3,1); --ease-io:cubic-bezier(.76,0,.24,1);
+  --d1:.35s; --d2:.6s; --d3:1s;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --red:#c4134d; --red-deep:#8d0a35; --red-bright:#ff3d78; --red-soft:#3a0f1e; --red-line:#5b1b33;
+    --ink:#070607; --ink-2:#121011; --on-ink:#ffffff; --on-ink-muted:#b9adb2; --on-ink-faint:rgba(255,255,255,.12);
+    --paper:#0f0d0e; --surface:#181416; --surface-2:#231c1f; --line:#302729;
+    --fg:#f5eff1; --muted:#a79a9f; --on-red:#ffffff;
+    --shadow:0 24px 48px -28px rgba(0,0,0,.85);
+    --logo-dark:none; --logo-light:inline-block;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --red:#c4134d; --red-deep:#8d0a35; --red-bright:#ff3d78; --red-soft:#3a0f1e; --red-line:#5b1b33;
+  --ink:#070607; --ink-2:#121011; --on-ink:#ffffff; --on-ink-muted:#b9adb2; --on-ink-faint:rgba(255,255,255,.12);
+  --paper:#0f0d0e; --surface:#181416; --surface-2:#231c1f; --line:#302729;
+  --fg:#f5eff1; --muted:#a79a9f; --on-red:#ffffff;
+  --shadow:0 24px 48px -28px rgba(0,0,0,.85);
+  --logo-dark:none; --logo-light:inline-block;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+body{margin:0;background:var(--paper);color:var(--fg);font-family:var(--body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.06;margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(2.6rem,6.4vw,4.9rem);font-weight:800}
+h2{font-size:clamp(1.9rem,3.7vw,2.85rem);font-weight:800}
+h3{font-size:1.3rem;font-weight:700}
+h4{font-size:1.05rem;font-weight:700;font-family:var(--body)}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font-family:inherit}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.kicker{display:flex;align-items:center;gap:12px;color:var(--red);font-weight:700;font-size:.92rem}
+.kicker::before{content:"";width:22px;height:3px;background:var(--red);flex:none}
+.on-ink .kicker{color:var(--red-bright)} .on-ink .kicker::before{background:var(--red-bright)}
+.lede{font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.55;color:var(--muted);max-width:60ch}
+.on-ink .lede{color:var(--on-ink-muted)}
+.measure{max-width:64ch}
+.stack{display:grid;gap:14px}
+.sec{padding-block:clamp(64px,9vw,120px)}
+.sec-tight{padding-block:clamp(44px,6vw,80px)}
+.sec-head{display:grid;gap:16px;margin-bottom:clamp(32px,4.5vw,56px);max-width:760px}
+.ink{background:var(--ink);color:var(--on-ink);position:relative}
+.ink > *{position:relative;z-index:1}
+.grain::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.surface{background:var(--surface)}
+
+/* Buttons & chips */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:var(--radius);font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1.1;position:relative;overflow:hidden;transition:transform var(--d1) var(--ease),background var(--d1) var(--ease),color var(--d1) var(--ease),border-color var(--d1) var(--ease),box-shadow var(--d1) var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.btn-red{background:var(--red);color:var(--on-red);box-shadow:0 10px 24px -14px var(--red)}
+.btn-red:hover{background:var(--red-deep);box-shadow:0 16px 30px -14px var(--red)}
+.btn-ink{background:var(--fg);color:var(--paper)}
+.btn-ghost{border-color:currentColor;background:transparent;color:inherit}
+.btn-ghost:hover{background:var(--red);border-color:var(--red);color:var(--on-red)}
+.btn .ic{width:18px;height:18px;flex:none;transition:transform var(--d1) var(--ease)}
+.btn:hover .ic{transform:translateX(4px)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.01em;border:1.5px solid var(--line);color:var(--fg);background:var(--paper)}
+.chip-red{background:var(--red);border-color:var(--red);color:var(--on-red)}
+.chip-soft{background:var(--red-soft);border-color:var(--red-line);color:var(--red)}
+a.chip{text-decoration:none;transition:border-color var(--d1) var(--ease),color var(--d1) var(--ease)} a.chip:hover{border-color:var(--red);color:var(--red)}
+.on-ink .chip{background:transparent;border-color:rgba(255,255,255,.28);color:var(--on-ink)}
+.on-ink a.chip:hover{border-color:var(--red-bright);color:var(--red-bright)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.gem{width:12px;height:12px;background:var(--red);transform:rotate(45deg);flex:none}
+
+/* Header */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow var(--d2) var(--ease)}
+.topbar.scrolled{box-shadow:0 10px 30px -22px rgba(0,0,0,.35)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;transition:height var(--d2) var(--ease)}
+.topbar.scrolled .wrap{height:64px}
+.brand{display:flex;align-items:center;text-decoration:none}
+.brand img{height:44px;width:auto;transition:height var(--d2) var(--ease)}
+.topbar.scrolled .brand img{height:38px}
+.logo-dark{display:var(--logo-dark)} .logo-light{display:var(--logo-light)}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{text-decoration:none;font-weight:600;font-size:.9rem;padding:10px 11px;white-space:nowrap;border-radius:var(--radius);color:var(--fg);position:relative;transition:color var(--d1) var(--ease)}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:5px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:0 50%;transition:transform var(--d2) var(--ease)}
+.nav a:hover{color:var(--red)}
+.nav a.active{color:var(--red)} .nav a.active::after{transform:scaleX(1)}
+.nav .btn{padding:10px 15px;margin-left:8px}
+.nav a.nav-gate{border-color:var(--line);color:var(--fg);padding:10px 14px;gap:8px} .nav a.nav-gate:hover{border-color:var(--red);background:transparent;color:var(--red)} .nav a.nav-gate::after{display:none} .nav a.nav-gate.active{color:var(--red);border-color:var(--red)} .nav a.nav-gate .ic{width:16px;height:16px} .nav a.nav-gate:hover .ic{transform:none}
+.nav a.btn-red{color:var(--on-red)} .nav a.btn-red:hover{background:var(--red-deep);color:var(--on-red)} .nav a.btn-red::after{display:none}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:0 50%}
+.burger{display:none;background:none;border:1.5px solid var(--line);border-radius:var(--radius);width:44px;height:44px;cursor:pointer;color:var(--fg);align-items:center;justify-content:center}
+.burger svg{width:22px;height:22px}
+.burger .l{transition:transform var(--d2) var(--ease),opacity var(--d1) var(--ease);transform-origin:12px 12px}
+.burger[aria-expanded="true"] .l1{transform:translateY(5px) rotate(45deg)} .burger[aria-expanded="true"] .l2{opacity:0} .burger[aria-expanded="true"] .l3{transform:translateY(-5px) rotate(-45deg)}
+@media (max-width:1120px){
+  .nav{display:flex;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px var(--gutter) 20px;gap:2px;box-shadow:var(--shadow);transform:translateY(-8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--d2) var(--ease),transform var(--d2) var(--ease),visibility 0s var(--d2)}
+  .nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:opacity var(--d2) var(--ease),transform var(--d2) var(--ease),visibility 0s}
+  .nav a{padding:14px 12px;font-size:1rem}
+  .nav a::after{display:none}
+  .nav .btn{margin:10px 0 0;justify-content:center}
+  .burger{display:inline-flex}
+}
+
+/* Views */
+.view{display:none}
+.view.active{display:block}
+
+/* Hero */
+.hero{overflow:hidden;clip-path:polygon(0 0,100% 0,100% calc(100% - 46px),0 100%);padding-block:clamp(56px,8vw,112px) clamp(104px,12vw,160px);isolation:isolate}
+.hero .aurora{position:absolute;inset:-20%;z-index:0;pointer-events:none;filter:blur(60px);opacity:.45}
+.hero .aurora i{position:absolute;border-radius:50%;background:var(--red);width:46vw;height:46vw;max-width:720px;max-height:720px}
+.hero .aurora i:nth-child(1){left:48%;top:-10%;animation:drift1 22s ease-in-out infinite alternate}
+.hero .aurora i:nth-child(2){left:62%;top:40%;width:34vw;height:34vw;background:var(--red-deep);animation:drift2 28s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(-8%,10%) scale(1.15)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(10%,-12%) scale(.9)}}
+.hero .glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(520px circle at var(--gx,70%) var(--gy,40%),rgba(255,92,143,.16),transparent 60%);opacity:0;transition:opacity var(--d3) var(--ease)}
+.hero:hover .glow{opacity:1}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{max-width:11ch}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}
+.hero h1 .w>span{display:inline-block}
+.hero h1 .dot{color:var(--red-bright)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.hero .meta{display:grid;gap:10px;margin-top:30px;color:var(--on-ink-muted);font-size:.92rem;font-weight:600}
+.hero .meta li{display:flex;align-items:center;gap:12px}
+.hero .meta .gem{width:8px;height:8px}
+.prism{position:relative;height:clamp(300px,50vh,500px);width:auto;aspect-ratio:416/700;justify-self:end;margin-right:clamp(0px,3vw,36px)}
+.prism .prism-svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.prism .ghost{position:absolute;left:-25%;top:-25%;width:150%;height:150%;opacity:.9;overflow:visible}
+.prism .halo{position:absolute;left:50%;top:50%;width:140%;aspect-ratio:1;margin-left:-70%;margin-top:-70%;border-radius:50%;background:radial-gradient(circle,rgba(167,0,54,.45),rgba(167,0,54,0) 62%);pointer-events:none}
+.facet{fill:var(--red);stroke:rgba(255,255,255,.1);stroke-width:1.2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35))}
+.facet.f2{fill:var(--red-deep)} .facet.f3{fill:var(--red-bright)} .facet.f4{fill:var(--red-deep)}
+.sheen{opacity:.9;mix-blend-mode:screen}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .prism{height:clamp(230px,48vw,330px);justify-self:center;margin:0;order:-1}
+  .prism .ghost{display:none}
+  .hero{clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),0 100%);padding-block:40px 92px}
+}
+
+/* Facts strip */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
+.fact{padding:24px 24px 22px;border-right:1.5px solid var(--line);display:grid;gap:6px;min-width:0}
+.fact:last-child{border-right:0}
+.fact b{font-family:var(--display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:var(--red);line-height:1;font-variant-numeric:tabular-nums}
+.fact span{font-size:.9rem;color:var(--muted);font-weight:600;line-height:1.45}
+@media (max-width:860px){.facts{grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:0}.fact:nth-child(-n+2){border-bottom:1.5px solid var(--line)}}
+
+/* Marquee of pôle wordmarks */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:18px;margin-top:clamp(40px,6vw,64px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee .track{display:flex;gap:0;width:max-content;animation:marquee 46s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee .item{display:flex;align-items:center;gap:22px;padding-inline:22px;white-space:nowrap;font-family:var(--display);font-weight:800;font-size:clamp(1.1rem,2.2vw,1.6rem);letter-spacing:-.01em}
+.marquee .item small{font-family:var(--body);font-weight:700;font-size:.72em;color:var(--muted);letter-spacing:0}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.marquee .track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.marquee .track .dup{display:none}}
+
+/* Pôles grid */
+.poles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{position:relative;background:var(--paper);border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;min-width:0;transition:border-color var(--d2) var(--ease),transform var(--d2) var(--ease),box-shadow var(--d2) var(--ease)}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),var(--red-soft),transparent 70%);transition:opacity var(--d2) var(--ease);z-index:0}
+.card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:var(--shadow)}
+.card:hover::before{opacity:1}
+.card>*{position:relative;z-index:1}
+.pole{display:grid;gap:14px;padding:30px;text-decoration:none;color:inherit}
+.pole::after{content:"";position:absolute;right:-28px;top:-28px;width:88px;height:88px;background:var(--red-soft);transform:rotate(45deg);transition:background var(--d2) var(--ease),transform var(--d2) var(--ease);z-index:0}
+.pole:hover::after{background:var(--red);transform:rotate(45deg) scale(1.15)}
+.idx{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem;color:var(--muted)}
+.idx b{display:inline-grid;place-items:center;width:26px;height:26px;background:var(--red);color:var(--on-red);transform:rotate(45deg);font-family:var(--display);font-size:.8rem;border-radius:3px}
+.idx b span{transform:rotate(-45deg)}
+.lockup{display:grid;gap:2px}
+.lockup small{font-weight:700;font-size:.85rem;color:var(--muted)}
+.lockup h3{font-size:1.6rem}
+.pole p{color:var(--muted);font-size:.98rem}
+.pole .more{font-weight:700;color:var(--red);font-size:.92rem;display:inline-flex;gap:8px;align-items:center;margin-top:2px}
+.pole .more .ic{width:16px;height:16px;transition:transform var(--d1) var(--ease)}
+.pole:hover .more .ic{transform:translateX(4px)}
+@media (max-width:760px){.poles{grid-template-columns:1fr}}
+
+/* Parcours stepper */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 18px}
+.step{position:relative;padding:26px 0 22px;min-width:0}
+.step .bar{position:absolute;left:0;top:0;height:3px;width:100%;background:var(--line)}
+.step .bar i{position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:0 50%}
+.step h3{font-size:1.2rem;display:flex;align-items:center;gap:12px}
+.step p{color:var(--muted);font-size:.95rem;margin-top:8px}
+.step .pole-tag{display:inline-block;margin-top:12px;font-size:.78rem;font-weight:700;color:var(--fg);background:var(--surface-2);padding:5px 10px;border-radius:999px}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Audience */
+.aud{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.aud > div{padding:26px;background:var(--surface);border-radius:var(--radius);display:grid;gap:10px;align-content:start;min-width:0}
+.aud h3{font-size:1.1rem}
+.aud p{color:var(--muted);font-size:.95rem}
+.aud ul{display:grid;gap:7px;font-size:.92rem;font-weight:600}
+.aud li{display:flex;gap:10px;align-items:center}.aud li .gem{width:7px;height:7px}
+@media (max-width:980px){.aud{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.aud{grid-template-columns:1fr}}
+
+/* Sommet band on home */
+.band{position:relative;overflow:hidden;background:var(--red);color:var(--on-red);clip-path:polygon(0 36px,100% 0,100% 100%,0 100%);padding-block:clamp(76px,9vw,116px) clamp(60px,7vw,96px)}
+.band::before{content:"";position:absolute;right:-10%;top:-30%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 60%);pointer-events:none}
+.band .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;position:relative}
+.band .sie{font-family:var(--serif);font-weight:700;font-size:clamp(3.6rem,9vw,6.8rem);line-height:.9;letter-spacing:-.02em}
+.band h2{font-size:clamp(1.4rem,2.6vw,2rem);max-width:22ch}
+.band .kicker{color:#ffd2df} .band .kicker::before{background:#ffd2df}
+.band .when{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.band .when span{border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 14px;font-weight:700;font-size:.9rem}
+.band .btn-ghost:hover{background:var(--ink);border-color:var(--ink)}
+.band .poster{width:min(240px,42vw);height:auto;border-radius:var(--radius);box-shadow:0 36px 70px -30px rgba(0,0,0,.75);transform:rotate(-3deg)}
+@media (max-width:760px){.band .wrap{grid-template-columns:1fr}.band .poster{transform:none;width:min(260px,70vw)}}
+
+/* CTA block */
+.cta-block{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;padding:clamp(30px,4vw,48px);border-radius:var(--radius);overflow:hidden}
+.cta-block h2{font-size:clamp(1.5rem,2.8vw,2.15rem)}
+.cta-block .btns{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:760px){.cta-block{grid-template-columns:1fr}}
+
+/* About */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.two,.three{grid-template-columns:1fr}}
+.pillar{padding:28px;background:var(--paper);border:1.5px solid var(--line);border-top:3px solid var(--red);border-radius:var(--radius);display:grid;gap:10px;align-content:start;min-width:0}
+.pillar h3{font-size:1.15rem}
+.pillar p{color:var(--muted);font-size:.97rem}
+.pillar .tag{font-weight:700;color:var(--red);font-size:.9rem}
+.values{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.value{padding:24px 22px;background:var(--surface);border-radius:var(--radius);display:grid;gap:8px;align-content:start;min-width:0}
+.value .gem{width:16px;height:16px;margin:4px 0 10px 4px}
+.value h3{font-size:1.02rem}
+.value p{color:var(--muted);font-size:.9rem;line-height:1.5}
+@media (max-width:1100px){.values{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.values{grid-template-columns:1fr}}
+.depts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dept{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;border:1.5px solid var(--line);border-radius:var(--radius);align-items:start;background:var(--paper)}
+.dept .gem{margin-top:8px}
+.dept b{display:block;font-size:.98rem}
+.dept span{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.depts{grid-template-columns:1fr}}
+
+/* Pôle detail */
+.pole-detail{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,56px);padding-block:clamp(48px,6vw,80px);border-top:1.5px solid var(--line)}
+.pole-detail:first-of-type{border-top:0}
+.pole-detail .lockup h2{font-size:clamp(1.9rem,3.2vw,2.6rem)}
+.pole-detail .desc{color:var(--muted);margin-top:16px}
+.offers{margin-top:22px;display:grid;gap:9px}
+.offers li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;font-size:.97rem}
+.offers li .gem{width:9px;height:9px;margin-top:9px}
+.panel{background:var(--surface);border-radius:var(--radius);padding:26px;display:grid;gap:16px;align-content:start;min-width:0}
+.panel h3{font-size:1.05rem}
+.panel .note{font-size:.86rem;color:var(--muted);line-height:1.5}
+.tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+.tbl th{text-align:left;font-size:.8rem;color:var(--muted);padding:0 0 10px;border-bottom:1.5px solid var(--line);font-weight:700}
+.tbl td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:last-child{text-align:right;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl .free{color:var(--red)}
+.tbl small{display:block;color:var(--muted);font-weight:500;font-size:.84rem}
+.tbl-wrap{overflow-x:auto}
+.free-box{background:var(--red);color:var(--on-red);padding:20px 22px;border-radius:var(--radius);display:grid;gap:4px}
+.free-box b{font-family:var(--display);font-size:2rem;font-weight:800;line-height:1}
+.free-box span{font-size:.92rem;font-weight:600}
+@media (max-width:860px){.pole-detail{grid-template-columns:1fr}}
+
+/* Programmes */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filters button{border:1.5px solid var(--line);background:var(--paper);color:var(--fg);padding:10px 18px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer;transition:background var(--d1) var(--ease),color var(--d1) var(--ease),border-color var(--d1) var(--ease)}
+.filters button:hover{border-color:var(--red);color:var(--red)}
+.filters button[aria-pressed="true"]{background:var(--fg);color:var(--paper);border-color:var(--fg)}
+.prog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.prog{padding:24px;display:grid;gap:12px;align-content:start}
+.prog .tag{font-size:.82rem;font-weight:800;color:var(--red)}
+.prog h3{font-size:1.08rem}
+.prog ul{display:grid;gap:7px;font-size:.93rem}
+.prog li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px}
+.prog li .gem{width:7px;height:7px;margin-top:8px}
+.prog .status{font-size:.82rem;color:var(--muted);font-weight:600;border-top:1px solid var(--line);padding-top:10px}
+@media (max-width:980px){.prog-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.prog-grid{grid-template-columns:1fr}}
+.formats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.format{padding:22px;background:var(--surface);border-radius:var(--radius);display:grid;gap:6px;min-width:0}
+.format b{font-size:1rem}
+.format span{font-size:.9rem;color:var(--muted)}
+.format .price{font-family:var(--display);font-weight:800;color:var(--red);font-size:1.15rem;margin-top:6px}
+@media (max-width:980px){.formats{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.formats{grid-template-columns:1fr}}
+
+/* Forms */
+.form{display:grid;gap:14px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label{display:grid;gap:6px;font-size:.86rem;font-weight:700}
+.form input,.form select,.form textarea{width:100%;font:inherit;font-size:.97rem;padding:13px 14px;border:1.5px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--fg);transition:border-color var(--d1) var(--ease),box-shadow var(--d1) var(--ease)}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--red);box-shadow:0 0 0 4px var(--red-soft);outline:none}
+.form textarea{min-height:130px;resize:vertical}
+.form .hint{font-size:.84rem;color:var(--muted)}
+.form .ok{display:none;padding:16px 18px;background:var(--red-soft);border:1.5px solid var(--red-line);color:var(--fg);border-radius:var(--radius);font-size:.95rem}
+.form.sent .ok{display:block;animation:pop var(--d2) var(--ease)}
+.form.sent .fields{display:none}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+
+/* Partners */
+.reasons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.reason{padding:26px;display:grid;gap:10px;align-content:start}
+.reason h3{font-size:1.1rem}
+.reason p{color:var(--muted);font-size:.95rem}
+@media (max-width:980px){.reasons{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.reasons{grid-template-columns:1fr}}
+.ways{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.way{padding:22px 20px;background:var(--surface);border-radius:var(--radius);display:grid;gap:8px;align-content:start;min-width:0}
+.way .gem{width:14px;height:14px;margin:2px 0 6px 2px}
+.way b{font-size:.98rem}
+.way span{font-size:.88rem;color:var(--muted);line-height:1.5}
+@media (max-width:1100px){.ways{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.ways{grid-template-columns:1fr}}
+.gain{width:100%;border-collapse:collapse;font-size:.95rem}
+.gain th,.gain td{text-align:left;padding:14px 16px;vertical-align:top;border-bottom:1px solid var(--line)}
+.gain th{background:var(--ink);color:var(--on-ink);font-size:.86rem;font-weight:700}
+.gain td:first-child{font-weight:800;white-space:nowrap}
+.gain tr:nth-child(even) td{background:var(--surface)}
+
+/* Contact */
+.community{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;padding:clamp(26px,3.5vw,40px);border-radius:var(--radius);overflow:hidden}
+.community .btn .ic{transition:none}
+@media (max-width:760px){.community{grid-template-columns:1fr}}
+.contacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.contact{padding:24px;display:grid;gap:8px;align-content:start}
+.contact .lab{font-size:.86rem;font-weight:700;color:var(--muted)}
+.contact .val{font-weight:800;font-size:1.05rem;word-break:break-word;user-select:all}
+.contact .sub{font-size:.88rem;color:var(--muted)}
+.copy{justify-self:start;margin-top:4px;background:var(--surface);border:1.5px solid var(--line);color:var(--fg);font:inherit;font-size:.82rem;font-weight:700;padding:8px 13px;border-radius:999px;cursor:pointer;transition:border-color var(--d1) var(--ease),color var(--d1) var(--ease)}
+.copy:hover{border-color:var(--red);color:var(--red)}
+@media (max-width:860px){.contacts{grid-template-columns:1fr}}
+.socials{display:flex;flex-wrap:wrap;gap:10px}
+.socials a{display:inline-flex;align-items:center;gap:9px;padding:10px 15px 10px 11px;border:1.5px solid var(--line);border-radius:999px;text-decoration:none;font-weight:700;font-size:.88rem;color:var(--fg);transition:border-color var(--d1) var(--ease),color var(--d1) var(--ease),transform var(--d1) var(--ease)}
+.socials a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.socials svg{width:18px;height:18px;fill:currentColor}
+.on-ink .socials a{border-color:rgba(255,255,255,.25);color:var(--on-ink)}
+.on-ink .socials a:hover{border-color:var(--red-bright);color:var(--red-bright)}
+
+/* Espace apprenant */
+.gate{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:clamp(28px,5vw,64px);align-items:start}
+.gate-card{padding:clamp(24px,3vw,36px);display:grid;gap:20px}
+.gate-card:hover{transform:none}
+.gate-head{display:grid;gap:14px}
+.gate-head img{height:40px;width:auto}
+.gate-head h3{font-size:1.25rem}
+.gate-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:.88rem}
+.check{display:flex!important;align-items:center;gap:8px;font-weight:600!important}
+.check input{width:16px!important;height:16px;padding:0!important;accent-color:var(--red)}
+.gate-link{color:var(--red);font-weight:700;text-decoration:none}
+.gate-link:hover{text-decoration:underline}
+.gate-preview{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;font-size:.86rem;color:var(--muted);background:var(--red-soft);border:1.5px solid var(--red-line);border-radius:var(--radius);padding:10px 12px;line-height:1.45}
+.gate-preview .gem{width:8px;height:8px;margin-top:7px}
+.gate-note{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:860px){.gate{grid-template-columns:1fr}}
+
+/* Sommet page */
+.sie-hero{overflow:hidden;clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%);padding-block:clamp(56px,8vw,100px) clamp(96px,11vw,150px);isolation:isolate}
+.sie-hero .aurora{position:absolute;inset:-20%;z-index:0;pointer-events:none;filter:blur(70px);opacity:.5}
+.sie-hero .aurora i{position:absolute;border-radius:50%;background:var(--red);width:40vw;height:40vw;max-width:640px;max-height:640px;left:-10%;top:30%;animation:drift2 26s ease-in-out infinite alternate}
+.sie-hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
+.sie-hero .sie{font-family:var(--serif);font-weight:700;font-size:clamp(5rem,15vw,11rem);line-height:.86;letter-spacing:-.03em;display:flex}
+.sie-hero .sie .w{display:inline-block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.sie-hero .sie .w>span{display:inline-block}
+.sie-hero .ed{display:inline-block;background:var(--red);color:#fff;padding:8px 16px;border-radius:999px;font-weight:800;font-size:.9rem;margin-top:16px}
+.sie-hero h1{font-size:clamp(1.35rem,2.7vw,2rem);text-transform:uppercase;letter-spacing:.01em;margin-top:22px;max-width:20ch}
+.sie-hero .theme{margin-top:20px;display:grid;gap:8px}
+.sie-hero .theme .lab{font-size:.86rem;color:var(--on-ink-muted);font-weight:700}
+.sie-hero .theme b{display:inline-block;background:#fff;color:#111;padding:9px 16px;font-family:var(--display);font-weight:800;font-size:1.25rem;border-radius:var(--radius);justify-self:start}
+.sie-hero .theme i{font-style:italic;color:var(--on-ink-muted);font-family:var(--serif);font-size:1.1rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.sie-hero .poster{width:min(380px,100%);height:auto;margin-left:auto;border-radius:6px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:30px;max-width:520px}
+.countdown div{background:rgba(255,255,255,.06);border:1px solid var(--on-ink-faint);border-radius:var(--radius);padding:14px 10px 12px;text-align:center;min-width:0}
+.countdown b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1;font-variant-numeric:tabular-nums}
+.countdown span{display:block;font-size:.76rem;font-weight:700;color:var(--on-ink-muted);margin-top:6px}
+.countdown-note{font-size:.86rem;color:var(--on-ink-muted);margin-top:10px}
+@media (max-width:860px){.sie-hero .wrap{grid-template-columns:1fr}.sie-hero .poster{margin:0 auto;width:min(320px,80vw)}}
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.info > div{padding:24px;display:grid;gap:6px;align-content:start}
+.info .lab{font-size:.86rem;font-weight:700;color:var(--red)}
+.info b{font-size:1.1rem;font-family:var(--display)}
+.info span{font-size:.92rem;color:var(--muted)}
+@media (max-width:860px){.info{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.info{grid-template-columns:1fr}}
+.prog-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.prog-list li{padding:18px 20px;background:var(--surface);border-radius:var(--radius);font-weight:700;font-size:.97rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start}
+.prog-list li .gem{width:10px;height:10px;margin-top:8px}
+@media (max-width:860px){.prog-list{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.prog-list{grid-template-columns:1fr}}
+.themes{display:flex;flex-wrap:wrap;gap:10px}
+.themes span{padding:10px 18px;border:2px solid var(--fg);border-radius:999px;font-weight:800;font-size:.95rem;transition:background var(--d1) var(--ease),color var(--d1) var(--ease),border-color var(--d1) var(--ease)}
+.themes span:hover{background:var(--red);border-color:var(--red);color:var(--on-red)}
+.gala{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.gala .poster2{width:min(380px,100%);height:auto;margin-left:auto;border-radius:6px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+@media (max-width:860px){.gala{grid-template-columns:1fr}.gala .poster2{margin:0 auto}}
+
+/* Footer */
+footer{padding-block:clamp(56px,6vw,80px) 28px}
+.foot{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px}
+.foot img{height:52px;width:auto;margin-bottom:16px}
+.foot p{color:var(--on-ink-muted);font-size:.93rem;max-width:40ch}
+.foot h4{font-size:.86rem;color:var(--on-ink-muted);margin-bottom:14px}
+.foot ul{display:grid;gap:9px;font-size:.95rem}
+.foot a{text-decoration:none;color:var(--on-ink);transition:color var(--d1) var(--ease)}
+.foot a:hover{color:var(--red-bright)}
+.foot .val{user-select:all;word-break:break-word}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--on-ink-faint);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:.84rem;color:var(--on-ink-muted)}
+@media (max-width:980px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.foot{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--paper);padding:12px 18px;border-radius:999px;font-weight:700;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity var(--d1) var(--ease),transform var(--d1) var(--ease);z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#accueil" aria-label="InnoVibe — accueil">
+      <img class="logo-dark" src="img/logo.png" alt="InnoVibe — Inspirez votre succès" width="330" height="144">
+      <img class="logo-light" src="img/logo_light.png" alt="InnoVibe — Inspirez votre succès" width="330" height="144">
+    </a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="l l1" d="M4 7h16"/><path class="l l2" d="M4 12h16"/><path class="l l3" d="M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#accueil" data-nav="accueil">Accueil</a>
+      <a href="#a-propos" data-nav="a-propos">Qui sommes-nous</a>
+      <a href="#poles" data-nav="poles">Nos pôles</a>
+      <a href="#programmes" data-nav="programmes">Programmes</a>
+      <a href="#partenaires" data-nav="partenaires">Partenaires</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+      <a href="#espace" data-nav="espace" class="btn btn-ghost nav-gate" data-elearning><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm-7.5 8.5a7.5 7.5 0 0 1 15 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Espace apprenant</a>
+      <a href="#sommet" data-nav="sommet" class="btn btn-red">Sommet 2026</a>
+    </nav>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ============ ACCUEIL ============ -->
+<section class="view active" id="view-accueil" data-view="accueil">
+  <div class="hero ink grain on-ink" id="hero">
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="stack hero-copy" style="gap:22px">
+        <span class="kicker" data-h="k">Kinshasa, République Démocratique du Congo</span>
+        <h1 id="heroTitle"><span class="w"><span>Inspirez</span></span> <span class="w"><span>votre</span></span> <span class="w"><span>succès<span class="dot">.</span></span></span></h1>
+        <p class="lede" data-h="l">InnoVibe est une entreprise congolaise d'innovation, d'entrepreneuriat et de développement des compétences. Par la formation, le coaching, le conseil stratégique et la mise en relation, elle accompagne les jeunes, les entrepreneurs, les entreprises et les organisations pour transformer les talents, les idées et les projets en résultats concrets.</p>
+        <div class="cta">
+          <a class="btn btn-red" href="#poles" data-h="c">Découvrir nos pôles <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="#partenaires" data-h="c">Devenir partenaire</a>
+        </div>
+        <ul class="meta">
+          <li data-h="m"><span class="gem"></span>Formation collective gratuite en présentiel</li>
+          <li data-h="m"><span class="gem"></span>Accessible sans condition de diplôme</li>
+          <li data-h="m"><span class="gem"></span>Un parcours complet, jusqu'au terrain</li>
+        </ul>
+      </div>
+      <div class="prism" id="prism" aria-hidden="true">
+        <div class="halo"></div>
+        <svg class="ghost" viewBox="0 0 416 700" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1.5"><polygon points="0,394.5 118,1.5 250.5,397 0,397.5"/><polygon points="281,382.5 274.5,372 142,1.5 397.5,322 281,382.5"/><polygon points="230,696.5 283.5,416 414,343.5 230,696.5"/><polygon points="0,426.5 250.5,425 198.5,699"/></svg>
+        <svg class="prism-svg" viewBox="0 0 416 700" id="prismSvg">
+          <defs>
+            <clipPath id="prismClip"><polygon points="0,394.5 118,1.5 250.5,397 0,397.5"/><polygon points="281,382.5 274.5,372 142,1.5 397.5,322 281,382.5"/><polygon points="230,696.5 283.5,416 414,343.5 230,696.5"/><polygon points="0,426.5 250.5,425 198.5,699"/></clipPath>
+            <linearGradient id="sheenGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          </defs>
+          <g class="facets"><polygon class="facet f1" points="0,394.5 118,1.5 250.5,397 0,397.5" data-dx="-49.6" data-dy="-49.4" data-r="5"/><polygon class="facet f2" points="281,382.5 274.5,372 142,1.5 397.5,322 281,382.5" data-dx="34.0" data-dy="-61.2" data-r="-7"/><polygon class="facet f3" points="230,696.5 283.5,416 414,343.5 230,696.5" data-dx="41.8" data-dy="56.2" data-r="9"/><polygon class="facet f4" points="0,426.5 250.5,425 198.5,699" data-dx="-23.2" data-dy="66.1" data-r="-11"/></g>
+          <g clip-path="url(#prismClip)"><rect class="sheen" id="sheen" x="-260" y="-200" width="180" height="1100" fill="url(#sheenGrad)" transform="skewX(-18)"/></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:-34px;position:relative;z-index:2">
+    <div class="facts" data-reveal>
+      <div class="fact" data-reveal-child><b data-count="4">4</b><span>pôles, un seul parcours : former, orienter, structurer, concrétiser</span></div>
+      <div class="fact" data-reveal-child><b>0 $</b><span>pour la formation collective en présentiel, financée par nos partenaires</span></div>
+      <div class="fact" data-reveal-child><b data-count="7">7</b><span>départements : une organisation structurée dès le départ</span></div>
+      <div class="fact" data-reveal-child><b>RDC</b><span>née à Kinshasa, avec une ambition africaine et internationale</span></div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <div class="item"><small>InnoVibe</small>Academy<span class="gem"></span></div>
+      <div class="item"><small>InnoVibe</small>Coaching<span class="gem"></span></div>
+      <div class="item"><small>InnoVibe</small>Consult<span class="gem"></span></div>
+      <div class="item"><small>InnoVibe</small>Impact &amp; Développement<span class="gem"></span></div>
+      <div class="item"><small>Inspirez</small>votre succès<span class="gem"></span></div>
+      <div class="item dup"><small>InnoVibe</small>Academy<span class="gem"></span></div>
+      <div class="item dup"><small>InnoVibe</small>Coaching<span class="gem"></span></div>
+      <div class="item dup"><small>InnoVibe</small>Consult<span class="gem"></span></div>
+      <div class="item dup"><small>InnoVibe</small>Impact &amp; Développement<span class="gem"></span></div>
+      <div class="item dup"><small>Inspirez</small>votre succès<span class="gem"></span></div>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="sec-head" data-reveal>
+      <span class="kicker" data-reveal-child>Nos pôles</span>
+      <h2 data-reveal-child>Quatre pôles, un seul parcours</h2>
+      <p class="lede" data-reveal-child>Chaque pôle nourrit le suivant : on se forme, on affine sa vision, on structure son projet, puis on le met en pratique sur le terrain.</p>
+    </div>
+    <div class="poles" data-reveal>
+      <a class="card pole" href="#academy" data-reveal-child>
+        <span class="idx"><b><span>1</span></b>Former</span>
+        <div class="lockup"><small>InnoVibe</small><h3>Academy</h3></div>
+        <p>Formations professionnelles accessibles à tous, y compris sans études préalables : entrepreneuriat, compétences métiers, numérique, leadership.</p>
+        <div class="chips"><span class="chip chip-red">Gratuit en présentiel</span><span class="chip">En ligne</span><span class="chip">Formations privées</span></div>
+        <span class="more">Voir le pôle <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card pole" href="#coaching" data-reveal-child>
+        <span class="idx"><b><span>2</span></b>Orienter</span>
+        <div class="lockup"><small>InnoVibe</small><h3>Coaching</h3></div>
+        <p>Masterclass, ateliers et conférences chaque mois, coaching individuel et en entreprise, pour se découvrir, affiner sa vision et développer son potentiel.</p>
+        <div class="chips"><span class="chip">Événements mensuels</span><span class="chip">Abonnement membres</span></div>
+        <span class="more">Voir le pôle <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card pole" href="#consult" data-reveal-child>
+        <span class="idx"><b><span>3</span></b>Structurer</span>
+        <div class="lockup"><small>InnoVibe</small><h3>Consult</h3></div>
+        <p>Conseil et accompagnement stratégique des entreprises, ONG, institutions et particuliers : structuration, stratégie, ressources humaines, gestion.</p>
+        <div class="chips"><span class="chip">Sur mesure</span><span class="chip">Entreprises</span><span class="chip">ONG et institutions</span></div>
+        <span class="more">Voir le pôle <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="card pole" href="#impact" data-reveal-child>
+        <span class="idx"><b><span>4</span></b>Concrétiser</span>
+        <div class="lockup"><small>InnoVibe</small><h3>Impact &amp; Développement</h3></div>
+        <p>Stages garantis par contrat tripartite, projets pilotes d'application et initiatives communautaires : la mise en pratique, en conditions réelles.</p>
+        <div class="chips"><span class="chip chip-soft">Stages</span><span class="chip chip-soft">Projets pilotes</span><span class="chip chip-soft">Initiatives communautaires</span></div>
+        <span class="more">Voir le pôle <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="surface">
+    <div class="wrap sec">
+      <div class="sec-head" data-reveal>
+        <span class="kicker" data-reveal-child>Le parcours InnoVibe</span>
+        <h2 data-reveal-child>De la première formation au premier résultat</h2>
+        <p class="lede" data-reveal-child>Trop de talents et d'idées ne deviennent jamais des projets, des emplois ou des entreprises. Notre parcours est conçu pour fermer ce fossé, étape par étape.</p>
+      </div>
+      <div class="steps" data-steps>
+        <div class="step"><div class="bar"><i></i></div><h3><span class="idx"><b><span>1</span></b></span>Former</h3><p>Acquérir des compétences concrètes et un savoir-faire directement utilisable.</p><span class="pole-tag">Academy</span></div>
+        <div class="step"><div class="bar"><i></i></div><h3><span class="idx"><b><span>2</span></b></span>Orienter</h3><p>Se découvrir, clarifier sa vision et renforcer sa posture de leader.</p><span class="pole-tag">Coaching</span></div>
+        <div class="step"><div class="bar"><i></i></div><h3><span class="idx"><b><span>3</span></b></span>Structurer</h3><p>Donner à son projet ou à son organisation une stratégie et une structure solides.</p><span class="pole-tag">Consult</span></div>
+        <div class="step"><div class="bar"><i></i></div><h3><span class="idx"><b><span>4</span></b></span>Concrétiser</h3><p>Passer à la pratique : stage, projet pilote ou initiative communautaire.</p><span class="pole-tag">Impact &amp; Développement</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="sec-head" data-reveal>
+      <span class="kicker" data-reveal-child>Pour qui</span>
+      <h2 data-reveal-child>À qui s'adresse InnoVibe</h2>
+    </div>
+    <div class="aud" data-reveal>
+      <div data-reveal-child><h3>Jeunes, avec ou sans diplôme</h3><p>Pour acquérir un métier, préparer son avenir professionnel et accéder à un stage.</p><ul><li><span class="gem"></span>Academy gratuite</li><li><span class="gem"></span>Stages et projets pilotes</li></ul></div>
+      <div data-reveal-child><h3>Entrepreneurs et porteurs de projets</h3><p>Pour trouver, valider, structurer et financer son idée d'affaire.</p><ul><li><span class="gem"></span>Coaching</li><li><span class="gem"></span>Academy privée</li><li><span class="gem"></span>Consult</li></ul></div>
+      <div data-reveal-child><h3>Entreprises, ONG et institutions</h3><p>Pour structurer l'organisation, former les équipes et concevoir des projets à impact.</p><ul><li><span class="gem"></span>Consult</li><li><span class="gem"></span>Coaching en entreprise</li><li><span class="gem"></span>Accueil de stagiaires</li></ul></div>
+      <div data-reveal-child><h3>Partenaires et parrains</h3><p>Pour financer la formation gratuite, parrainer un programme ou soutenir en nature.</p><ul><li><span class="gem"></span>Programmes parrainés</li><li><span class="gem"></span>Projets pilotes</li></ul></div>
+    </div>
+  </div>
+
+  <div class="band" id="band">
+    <div class="wrap">
+      <div class="stack" data-reveal style="gap:16px">
+        <span class="kicker" data-reveal-child>Actualité</span>
+        <div class="sie" data-reveal-child>SIE</div>
+        <h2 data-reveal-child>Sommet de l'Innovation et de l'Entrepreneuriat, première édition</h2>
+        <div class="when" data-reveal-child><span>Samedi 12 décembre 2026</span><span>Grand Tambour, Kinshasa</span><span>Afrique Innovante</span></div>
+        <div data-reveal-child><a class="btn btn-ghost" href="#sommet">Voir la page du sommet <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+      </div>
+      <img class="poster" data-parallax="8" src="img/sie_affiche.jpg" alt="Affiche officielle de la 1ère édition du SIE" width="240" height="367">
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="cta-block ink grain on-ink" data-reveal>
+      <div class="stack" style="gap:10px" data-reveal-child>
+        <span class="kicker">Construisons ensemble</span>
+        <h2>Vous avez un projet, une idée, une organisation à faire grandir ?</h2>
+        <p style="color:var(--on-ink-muted)">Écrivez-nous ou venez à la prochaine session. L'accompagnement commence par une conversation.</p>
+      </div>
+      <div class="btns" data-reveal-child>
+        <a class="btn btn-red" href="#contact">Nous contacter</a>
+        <a class="btn btn-ghost" href="#programmes">Voir les programmes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUI SOMMES-NOUS ============ -->
+<section class="view" id="view-a-propos" data-view="a-propos">
+  <div class="ink grain on-ink sec-tight">
+    <div class="wrap stack page-head" style="gap:16px">
+      <span class="kicker">Qui sommes-nous</span>
+      <h1 style="font-size:clamp(2.1rem,4.6vw,3.5rem)">Une entreprise congolaise qui transforme les talents en résultats</h1>
+      <p class="lede">InnoVibe est spécialisée dans l'innovation, l'entrepreneuriat et le développement des compétences. Elle accompagne les individus, les entrepreneurs, les entreprises et les organisations dans leur développement à travers le coaching, la formation, l'accompagnement stratégique et la mise en relation.</p>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="two" data-reveal>
+      <div class="stack" style="gap:18px" data-reveal-child>
+        <span class="kicker">Ce que nous faisons</span>
+        <h2>Des espaces où les talents rencontrent les opportunités</h2>
+      </div>
+      <div class="stack measure" style="gap:16px" data-reveal-child>
+        <p>InnoVibe crée et développe des espaces, programmes et initiatives qui favorisent la rencontre entre les talents, les idées, les projets, les entreprises et les opportunités.</p>
+        <p>À travers ses formations, ses événements, ses activités de networking, ses programmes d'accompagnement et ses initiatives collaboratives, InnoVibe facilite les échanges, le partage de connaissance, la création de synergies et le développement de projets.</p>
+        <p>Notre promesse tient en trois mots : <strong>Inspirez votre succès</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface">
+    <div class="wrap sec">
+      <div class="three" data-reveal>
+        <div class="pillar" data-reveal-child><span class="tag">Notre mission</span><h3>Donner les outils, les compétences et les connexions</h3><p>Donner aux jeunes, entrepreneurs, entreprises et organisations les outils, les compétences, les connexions et l'accompagnement nécessaires pour développer leur potentiel, structurer leurs projets et concrétiser leurs ambitions.</p></div>
+        <div class="pillar" data-reveal-child><span class="tag">Notre objectif</span><h3>Réduire le fossé entre les talents et les opportunités</h3><p>Contribuer à un écosystème entrepreneurial et professionnel dynamique, innovant et créateur de valeur, où les compétences, les idées et les initiatives deviennent des projets, des collaborations et des opportunités concrètes.</p></div>
+        <div class="pillar" data-reveal-child><span class="tag">Notre vision</span><h3>Devenir une référence, en Afrique et au-delà</h3><p>Devenir une plateforme reconnue à l'international, au-delà de la seule sphère francophone, comme référence en matière d'innovation, d'entrepreneuriat et de développement des compétences.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="sec-head" data-reveal>
+      <span class="kicker" data-reveal-child>Nos valeurs</span>
+      <h2 data-reveal-child>Ce qui guide chacune de nos actions</h2>
+    </div>
+    <div class="values" data-reveal>
+      <div class="value" data-reveal-child><div class="gem"></div><h3>Innovation</h3><p>Faire émerger sans cesse de nouvelles idées, méthodes et opportunités pour nos bénéficiaires.</p></div>
+      <div class="value" data-reveal-child><div class="gem"></div><h3>Connexion et synergie</h3><p>Créer des ponts entre talents, projets, entreprises et opportunités par la mise en relation.</p></div>
+      <div class="value" data-reveal-child><div class="gem"></div><h3>Croissance du potentiel</h3><p>Faire grandir les projets et développer le potentiel de chaque personne et organisation accompagnée.</p></div>
+      <div class="value" data-reveal-child><div class="gem"></div><h3>Impact concret</h3><p>Transformer les idées en projets, collaborations et opportunités réelles et mesurables.</p></div>
+      <div class="value" data-reveal-child><div class="gem"></div><h3>Accessibilité et inclusion</h3><p>Réduire le fossé entre les talents et les opportunités, en particulier pour les jeunes, les femmes et les talents émergents.</p></div>
+    </div>
+  </div>
+
+  <div class="surface">
+    <div class="wrap sec">
+      <div class="two" data-reveal>
+        <div class="stack" style="gap:18px" data-reveal-child>
+          <span class="kicker">Notre organisation</span>
+          <h2>Structurée dès le départ</h2>
+          <p class="measure" style="color:var(--muted)">InnoVibe est une entreprise formellement constituée, dotée de statuts et organisée en sept départements. Chaque pôle d'activité a un responsable identifié à chaque étape, et la formation gratuite est tenue au même niveau d'exigence que les services payants.</p>
+        </div>
+        <div class="depts" data-reveal-child>
+          <div class="dept"><div class="gem"></div><div><b>Direction Générale</b><span>Vision, stratégie et pilotage de l'entreprise</span></div></div>
+          <div class="dept"><div class="gem"></div><div><b>Direction des Opérations</b><span>Programmes, administration, budget, finance et ressources humaines</span></div></div>
+          <div class="dept"><div class="gem"></div><div><b>Communication &amp; Marketing</b><span>Communication, communauté en ligne, création visuelle et média</span></div></div>
+          <div class="dept"><div class="gem"></div><div><b>Impact &amp; Développement / SIE</b><span>Événements, logistique, accueil des participants, stages et projets</span></div></div>
+          <div class="dept"><div class="gem"></div><div><b>Partenariat &amp; Relation</b><span>Partenariats, sponsoring, juridique, développement des affaires, relations publiques</span></div></div>
+          <div class="dept"><div class="gem"></div><div><b>Support Exécutif</b><span>Coordination administrative, accueil et services généraux</span></div></div>
+          <div class="dept"><div class="gem"></div><div><b>Systèmes d'Information &amp; Digital</b><span>Données, infrastructure et outils numériques</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="cta-block ink grain on-ink" data-reveal>
+      <div class="stack" style="gap:10px" data-reveal-child>
+        <span class="kicker">Aller plus loin</span>
+        <h2>Découvrez nos quatre pôles et ce qu'ils proposent</h2>
+      </div>
+      <div class="btns" data-reveal-child><a class="btn btn-red" href="#poles">Nos pôles <svg class="ic"><use href="#i-arrow"/></svg></a><a class="btn btn-ghost" href="#partenaires">Nous soutenir</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOS PÔLES ============ -->
+<section class="view" id="view-poles" data-view="poles">
+  <div class="ink grain on-ink sec-tight">
+    <div class="wrap stack page-head" style="gap:16px">
+      <span class="kicker">Nos pôles</span>
+      <h1 style="font-size:clamp(2.1rem,4.6vw,3.5rem)">Former, orienter, structurer, concrétiser</h1>
+      <p class="lede">Quatre pôles complémentaires qui forment un seul parcours. Chacun peut aussi être rejoint directement, selon votre besoin.</p>
+      <div class="chips" style="margin-top:6px">
+        <a class="chip" href="#academy">Academy</a><a class="chip" href="#coaching">Coaching</a><a class="chip" href="#consult">Consult</a><a class="chip" href="#impact">Impact &amp; Développement</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article class="pole-detail" id="academy" data-reveal>
+      <div data-reveal-child>
+        <span class="idx"><b><span>1</span></b>Former</span>
+        <div class="lockup" style="margin-top:12px"><small>InnoVibe</small><h2>Academy</h2></div>
+        <p class="desc">Des formations professionnelles accessibles à tous, y compris à ceux qui n'ont pas fait d'études. L'Academy renforce les compétences métiers, le leadership, le savoir-faire concret et l'esprit entrepreneurial, pour préparer chaque bénéficiaire à un avenir professionnel solide et autonome.</p>
+        <ul class="offers">
+          <li><span class="gem"></span><span><strong>Entrepreneuriat et création d'entreprise</strong> : créer son entreprise en RDC, rédiger un business plan, valider une idée d'affaire, gérer sa trésorerie.</span></li>
+          <li><span class="gem"></span><span><strong>Compétences métiers et techniques</strong> : vente et négociation, gestion de stock, notions de comptabilité, rédaction professionnelle.</span></li>
+          <li><span class="gem"></span><span><strong>Compétences numériques</strong> : initiation à l'ordinateur et à Internet, marketing digital, vente en ligne, bureautique.</span></li>
+          <li><span class="gem"></span><span><strong>Leadership et savoir-être</strong> : prise de parole, gestion du temps, CV et entretien d'embauche, travail d'équipe.</span></li>
+        </ul>
+        <div style="margin-top:24px"><a class="btn btn-ink" href="#programmes">Voir le catalogue <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+      </div>
+      <div class="panel" data-reveal-child>
+        <div class="free-box"><b>0 $</b><span>Formation collective en présentiel : totalement gratuite, zéro frais, sans condition de diplôme.</span></div>
+        <h3>Formats et tarifs</h3>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Format</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Collective en présentiel<small>Grand public, accessibilité maximale</small></td><td class="free">Gratuit</td></tr>
+            <tr><td>En ligne (groupe / catalogue)<small>Public élargi, en autonomie</small></td><td>50 $ / programme</td></tr>
+            <tr><td>Privée individuelle, présentiel<small>Selon durée et thématique</small></td><td>350 – 1 000 $</td></tr>
+            <tr><td>Privée individuelle, en ligne<small>Selon durée et thématique</small></td><td>150 – 500 $</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">Le format collectif gratuit est financé par nos partenaires, sponsors, ONG et bailleurs, ainsi que par les revenus des trois autres formats.</p>
+      </div>
+    </article>
+
+    <article class="pole-detail" id="coaching" data-reveal>
+      <div data-reveal-child>
+        <span class="idx"><b><span>2</span></b>Orienter</span>
+        <div class="lockup" style="margin-top:12px"><small>InnoVibe</small><h2>Coaching</h2></div>
+        <p class="desc">Des ateliers de coaching, des masterclass et des conférences inspirantes, programmés chaque mois. Le Coaching aide chacun à se découvrir, à affiner sa vision et à développer son potentiel. Il accompagne les porteurs de projets, les jeunes talents et les futurs leaders.</p>
+        <ul class="offers">
+          <li><span class="gem"></span><span><strong>Coaching individuel</strong> : carrière et transition professionnelle, confiance en soi, orientation des jeunes diplômés.</span></li>
+          <li><span class="gem"></span><span><strong>Coaching pour porteurs de projets</strong> : clarifier sa vision, se préparer à une levée de fonds ou à un concours de plans d'affaires, rebondir après un échec.</span></li>
+          <li><span class="gem"></span><span><strong>Masterclass et ateliers mensuels</strong> : leadership au féminin, gestion du stress de l'entrepreneur, réseau professionnel, décision sous incertitude.</span></li>
+          <li><span class="gem"></span><span><strong>Coaching en entreprise</strong> : managers de première ligne, cohésion d'équipe, dirigeants de PME.</span></li>
+        </ul>
+      </div>
+      <div class="panel" data-reveal-child>
+        <h3>Tarifs par événement</h3>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Événement</th><th>Présentiel / en ligne</th></tr></thead>
+          <tbody>
+            <tr><td>Masterclass</td><td>25 – 40 $ / 15 – 25 $</td></tr>
+            <tr><td>Atelier</td><td>40 – 70 $ / 25 – 40 $</td></tr>
+            <tr><td>Conférence<small>Selon l'ampleur</small></td><td>20 – 60 $ / 10 – 30 $</td></tr>
+          </tbody>
+        </table></div>
+        <h3>Abonnement membres</h3>
+        <div class="tbl-wrap"><table class="tbl">
+          <tbody>
+            <tr><td>Mensuel<small>Tous les événements du mois, présentiel et en ligne</small></td><td>50 – 80 $ / mois</td></tr>
+            <tr><td>Annuel<small>Même accès, tarif dégressif et avantages exclusifs</small></td><td>400 – 600 $ / an</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">Les événements en ligne sont accessibles en direct et en replay.</p>
+      </div>
+    </article>
+
+    <article class="pole-detail" id="consult" data-reveal>
+      <div data-reveal-child>
+        <span class="idx"><b><span>3</span></b>Structurer</span>
+        <div class="lockup" style="margin-top:12px"><small>InnoVibe</small><h2>Consult</h2></div>
+        <p class="desc">Des services de conseil et d'accompagnement stratégique pour les entreprises, les ONG, les institutions et les particuliers : structuration, stratégie, ressources humaines, gestion interne. Consult intervient aussi dans des projets d'impact communautaire, en développement local, social, santé et éducation.</p>
+        <ul class="offers">
+          <li><span class="gem"></span><span><strong>Structuration d'entreprise</strong> : formalisation juridique, gouvernance, structuration financière et tableaux de bord.</span></li>
+          <li><span class="gem"></span><span><strong>Stratégie et croissance</strong> : diagnostic stratégique, plan de développement, expansion, positionnement concurrentiel.</span></li>
+          <li><span class="gem"></span><span><strong>Ressources humaines et organisation</strong> : organigramme, fiches de poste, recrutement, culture d'entreprise.</span></li>
+          <li><span class="gem"></span><span><strong>Finance et gestion</strong> : suivi budgétaire, préparation à la recherche de financement, rentabilité.</span></li>
+          <li><span class="gem"></span><span><strong>Projets d'impact communautaire</strong> : conception et évaluation de projets sociaux, programmes de développement local, coopératives et associations.</span></li>
+        </ul>
+      </div>
+      <div class="panel" data-reveal-child>
+        <h3>Une tarification adaptée à chaque client</h3>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Client</th><th>Modèle</th></tr></thead>
+          <tbody>
+            <tr><td>Particuliers<small>Prix connu à l'avance</small></td><td>Forfait</td></tr>
+            <tr><td>PME<small>Flexible selon l'ampleur de la mission</small></td><td>Taux journalier ou forfait</td></tr>
+            <tr><td>Grandes entreprises, institutions<small>Accompagnement continu et budgétisé</small></td><td>Mensualité</td></tr>
+            <tr><td>ONG et bailleurs<small>Cadré par les termes de référence</small></td><td>Forfait ou taux journalier</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">Chaque mission fait l'objet d'un devis après un premier échange de cadrage, sans engagement.</p>
+        <div><a class="btn btn-red" href="#contact">Demander un échange</a></div>
+      </div>
+    </article>
+
+    <article class="pole-detail" id="impact" data-reveal>
+      <div data-reveal-child>
+        <span class="idx"><b><span>4</span></b>Concrétiser</span>
+        <div class="lockup" style="margin-top:12px"><small>InnoVibe</small><h2>Impact &amp; Développement</h2></div>
+        <p class="desc">La phase d'aboutissement pratique. Les bénéficiaires formés, coachés et accompagnés sont intégrés dans des environnements réels pour mettre leurs compétences en pratique : stages professionnels, projets pilotes d'application et initiatives communautaires à fort impact social et économique.</p>
+        <ul class="offers">
+          <li><span class="gem"></span><span><strong>Stages professionnels</strong> : chez InnoVibe ou chez un partenaire, avec InnoVibe comme garant du placement grâce à un contrat tripartite stagiaire – InnoVibe – partenaire.</span></li>
+          <li><span class="gem"></span><span><strong>Projets pilotes d'application</strong> : un groupe de bénéficiaires construit, avec notre accompagnement, un projet concret et réel, par exemple une plateforme de vente en ligne pour des artisans locaux.</span></li>
+          <li><span class="gem"></span><span><strong>Initiatives communautaires</strong> : entrepreneuriat digital, agriculture et agribusiness, éducation et compétences, environnement et économie créative, inclusion et impact social.</span></li>
+        </ul>
+      </div>
+      <div class="panel" data-reveal-child>
+        <h3>Le contrat tripartite</h3>
+        <p class="note" style="font-size:.95rem;color:var(--fg)">Chaque stage chez un partenaire est encadré par un contrat signé par le stagiaire, InnoVibe et l'entreprise d'accueil. Il fixe la mission, la durée, l'encadrement et la rémunération. InnoVibe suit le stagiaire du premier au dernier jour.</p>
+        <h3>Pour les entreprises d'accueil</h3>
+        <ul class="offers" style="margin-top:0">
+          <li><span class="gem"></span><span>Des stagiaires déjà formés et accompagnés, présélectionnés selon vos besoins.</span></li>
+          <li><span class="gem"></span><span>Un interlocuteur unique pendant toute la durée du stage.</span></li>
+          <li><span class="gem"></span><span>Un vivier de talents pour vos recrutements futurs.</span></li>
+        </ul>
+        <div><a class="btn btn-red" href="#partenaires">Accueillir un stagiaire</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PROGRAMMES ============ -->
+<section class="view" id="view-programmes" data-view="programmes">
+  <div class="ink grain on-ink sec-tight">
+    <div class="wrap stack page-head" style="gap:16px">
+      <span class="kicker">Programmes</span>
+      <h1 style="font-size:clamp(2.1rem,4.6vw,3.5rem)">Le catalogue de lancement</h1>
+      <p class="lede">Les thèmes de formation, de coaching, de conseil et de projets proposés par nos quatre pôles. Le calendrier des premières sessions sera publié ici et sur nos réseaux.</p>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="sec-head" style="margin-bottom:24px" data-reveal>
+      <span class="kicker" data-reveal-child>Formats de l'Academy</span>
+      <h2 data-reveal-child>Quatre façons de se former</h2>
+    </div>
+    <div class="formats" data-reveal>
+      <div class="format" data-reveal-child><b>Collective en présentiel</b><span>Sessions en groupe à Kinshasa, ouvertes à tous, sans condition de diplôme.</span><span class="price">Gratuit</span></div>
+      <div class="format" data-reveal-child><b>En ligne</b><span>Programmes à suivre à distance, en groupe ou en autonomie.</span><span class="price">50 $ / programme</span></div>
+      <div class="format" data-reveal-child><b>Privée, en présentiel</b><span>Accompagnement individuel sur mesure, selon durée et thématique.</span><span class="price">350 – 1 000 $</span></div>
+      <div class="format" data-reveal-child><b>Privée, en ligne</b><span>Accompagnement individuel à distance, selon durée et thématique.</span><span class="price">150 – 500 $</span></div>
+    </div>
+  </div>
+
+  <div class="surface">
+    <div class="wrap sec">
+      <div class="sec-head" style="margin-bottom:20px" data-reveal>
+        <span class="kicker" data-reveal-child>Catalogue</span>
+        <h2 data-reveal-child>Thèmes proposés par pôle</h2>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer par pôle">
+        <button type="button" data-f="all" aria-pressed="true">Tout</button>
+        <button type="button" data-f="academy" aria-pressed="false">Academy</button>
+        <button type="button" data-f="coaching" aria-pressed="false">Coaching</button>
+        <button type="button" data-f="consult" aria-pressed="false">Consult</button>
+        <button type="button" data-f="impact" aria-pressed="false">Impact &amp; Développement</button>
+      </div>
+      <div class="prog-grid" id="progGrid" aria-live="polite"></div>
+      <p class="note" style="margin-top:22px;font-size:.88rem;color:var(--muted);max-width:70ch">Catalogue de lancement : les thèmes seront priorisés et enrichis selon la demande confirmée sur le terrain. Les formations collectives gratuites et les formations en ligne sont animées par les formateurs InnoVibe ; les modules spécialisés mobilisent des experts métiers, des entrepreneurs locaux et des partenaires institutionnels.</p>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="two" data-reveal>
+      <div class="stack" style="gap:16px" data-reveal-child>
+        <span class="kicker">Prochaines sessions</span>
+        <h2>Être informé de l'ouverture des inscriptions</h2>
+        <p class="measure" style="color:var(--muted)">Laissez-nous vos coordonnées et le pôle qui vous intéresse. Nous vous préviendrons dès la publication du calendrier des premières sessions.</p>
+      </div>
+      <form class="form" data-form="sessions" novalidate data-reveal-child>
+        <div class="fields stack" style="gap:14px">
+          <div class="row">
+            <label>Nom complet<input type="text" id="s-nom" name="nom" autocomplete="name" placeholder="Votre nom"></label>
+            <label>Téléphone / WhatsApp<input type="tel" id="s-tel" name="tel" autocomplete="tel" placeholder="+243 …"></label>
+          </div>
+          <label>Adresse e-mail (facultatif)<input type="email" id="s-mail" name="email" autocomplete="email" placeholder="vous@exemple.cd"></label>
+          <label>Pôle qui vous intéresse
+            <select id="s-pole" name="pole">
+              <option>InnoVibe Academy (formations)</option>
+              <option>InnoVibe Coaching (masterclass, ateliers, coaching)</option>
+              <option>InnoVibe Consult (conseil et accompagnement)</option>
+              <option>InnoVibe Impact &amp; Développement (stages et projets)</option>
+            </select>
+          </label>
+          <div><button class="btn btn-red" type="submit">Me prévenir</button></div>
+          <p class="hint">Vos coordonnées servent uniquement à vous informer de nos sessions.</p>
+        </div>
+        <div class="ok" role="status">Merci ! Nous vous préviendrons dès l'ouverture des inscriptions. <em>(Maquette : ce formulaire n'est pas encore connecté.)</em></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTENAIRES ============ -->
+<section class="view" id="view-partenaires" data-view="partenaires">
+  <div class="ink grain on-ink sec-tight">
+    <div class="wrap stack page-head" style="gap:16px">
+      <span class="kicker">Partenaires et soutiens</span>
+      <h1 style="font-size:clamp(2.1rem,4.6vw,3.5rem)">Investissez dans les talents de demain</h1>
+      <p class="lede">La formation collective d'InnoVibe est gratuite pour ses bénéficiaires parce que des partenaires, des sponsors, des ONG, des bailleurs et des parrains la rendent possible. Rejoignez-les.</p>
+      <div><a class="btn btn-red" href="#contact">Prendre contact <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="sec-head" data-reveal>
+      <span class="kicker" data-reveal-child>Pourquoi nous soutenir</span>
+      <h2 data-reveal-child>Six raisons de s'engager avec InnoVibe</h2>
+    </div>
+    <div class="reasons" data-reveal>
+      <div class="card reason" data-reveal-child><h3>Un problème réel et durable</h3><p>Trop de talents et d'idées ne deviennent jamais des projets, des emplois ou des entreprises. InnoVibe s'attaque au fossé entre les talents et les opportunités.</p></div>
+      <div class="card reason" data-reveal-child><h3>Un parcours complet</h3><p>Academy, Coaching, Consult, puis Impact &amp; Développement : chaque bénéficiaire est accompagné de la formation jusqu'à la mise en pratique.</p></div>
+      <div class="card reason" data-reveal-child><h3>Un modèle économique diversifié</h3><p>La formation gratuite est financée par les partenaires et par les revenus des formats en ligne et privés, des abonnements, du conseil et des événements.</p></div>
+      <div class="card reason" data-reveal-child><h3>Un impact concret et mesurable</h3><p>Bénéficiaires formés gratuitement, stagiaires placés, projets pilotes réalisés, avec un accent sur les jeunes et les femmes. Nous rendons compte des résultats.</p></div>
+      <div class="card reason" data-reveal-child><h3>Une organisation structurée</h3><p>Une entreprise formellement constituée, sept départements, des responsabilités claires à chaque étape.</p></div>
+      <div class="card reason" data-reveal-child><h3>Une ambition internationale</h3><p>Devenir une plateforme reconnue au-delà de la sphère francophone, en partant de Kinshasa.</p></div>
+    </div>
+  </div>
+
+  <div class="surface">
+    <div class="wrap sec">
+      <div class="sec-head" data-reveal>
+        <span class="kicker" data-reveal-child>Formes de partenariat</span>
+        <h2 data-reveal-child>Plusieurs façons de nous rejoindre</h2>
+        <p class="lede" data-reveal-child>Chaque partenariat est construit sur mesure. Voici les formes les plus courantes.</p>
+      </div>
+      <div class="ways" data-reveal>
+        <div class="way" data-reveal-child><div class="gem"></div><b>Parrainer un programme</b><span>Financer une formation collective gratuite et y associer votre nom.</span></div>
+        <div class="way" data-reveal-child><div class="gem"></div><b>Sponsoriser un projet pilote</b><span>Soutenir un projet concret mené par des bénéficiaires formés.</span></div>
+        <div class="way" data-reveal-child><div class="gem"></div><b>Soutenir en nature</b><span>Salles, équipements, mobilité, restauration : chaque contribution compte.</span></div>
+        <div class="way" data-reveal-child><div class="gem"></div><b>Accueillir des stagiaires</b><span>Recevoir des talents formés, dans le cadre d'un contrat tripartite.</span></div>
+        <div class="way" data-reveal-child><div class="gem"></div><b>Partenariat institutionnel</b><span>Cofinancer des programmes et des projets communautaires avec des ONG et bailleurs.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="sec-head" data-reveal>
+      <span class="kicker" data-reveal-child>Ce que vous y gagnez</span>
+      <h2 data-reveal-child>Un partenariat utile des deux côtés</h2>
+    </div>
+    <div class="tbl-wrap" data-reveal>
+      <table class="gain" data-reveal-child>
+        <thead><tr><th>Vous êtes</th><th>Ce que vous recherchez</th><th>Ce qu'InnoVibe vous apporte</th></tr></thead>
+        <tbody>
+          <tr><td>Sponsor ou entreprise</td><td>Visibilité, image de marque, accès aux talents</td><td>Association de votre nom aux programmes et projets pilotes, accès à des stagiaires formés, formation de votre personnel, networking</td></tr>
+          <tr><td>ONG ou bailleur</td><td>Impact social mesurable, ciblage jeunes et femmes, redevabilité</td><td>Formation gratuite accessible à tous, projets communautaires, stages, indicateurs de résultats, cofinancement</td></tr>
+          <tr><td>Parrain ou partenaire privé</td><td>Soutenir une cause, associer votre nom à un programme</td><td>Parrainage d'un programme gratuit ou d'un projet pilote, reconnaissance publique, rapports d'impact, accès au réseau</td></tr>
+          <tr><td>Institution ou banque</td><td>Sérieux, gouvernance, contribution à l'emploi</td><td>Organisation structurée, revenus diversifiés, contribution à l'emploi des jeunes et à l'entrepreneuriat, gestion budgétaire dédiée</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-bottom:clamp(64px,9vw,120px)">
+    <div class="cta-block ink grain on-ink" data-reveal>
+      <div class="stack" style="gap:10px" data-reveal-child>
+        <span class="kicker">Parlons-en</span>
+        <h2>Construisons un partenariat à votre mesure</h2>
+        <p style="color:var(--on-ink-muted)">Écrivez à <span class="val" style="font-weight:800;user-select:all">partenariats@innovibe.cd</span> ou laissez-nous un message. Nous revenons vers vous rapidement.</p>
+      </div>
+      <div class="btns" data-reveal-child><a class="btn btn-red" href="#contact">Nous écrire</a><button class="btn btn-ghost copy-btn" type="button" data-copy="partenariats@innovibe.cd">Copier l'adresse</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="view" id="view-contact" data-view="contact">
+  <div class="ink grain on-ink sec-tight">
+    <div class="wrap stack page-head" style="gap:16px">
+      <span class="kicker">Contact</span>
+      <h1 style="font-size:clamp(2.1rem,4.6vw,3.5rem)">Parlons de votre projet</h1>
+      <p class="lede">Une question sur une formation, une demande d'accompagnement, une proposition de partenariat : écrivez-nous, appelez-nous ou passez par WhatsApp.</p>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="contacts" data-reveal>
+      <div class="card contact" data-reveal-child><span class="lab">Informations générales</span><span class="val">Contact@innovibe.cd</span><span class="sub">Formations, coaching, demandes générales</span><button class="copy copy-btn" type="button" data-copy="Contact@innovibe.cd">Copier</button></div>
+      <div class="card contact" data-reveal-child><span class="lab">Partenariats et entreprises</span><span class="val">partenariats@innovibe.cd</span><span class="sub">Sponsoring, parrainage, conseil, accueil de stagiaires</span><button class="copy copy-btn" type="button" data-copy="partenariats@innovibe.cd">Copier</button></div>
+      <div class="card contact" data-reveal-child><span class="lab">Infoline et WhatsApp</span><span class="val">+243 844 498 497</span><span class="sub">Kinshasa, République Démocratique du Congo</span><button class="copy copy-btn" type="button" data-copy="+243844498497">Copier</button></div>
+    </div>
+    <div class="community ink grain on-ink" data-reveal style="margin-top:18px">
+      <div class="stack" style="gap:8px" data-reveal-child>
+        <span class="kicker">La communauté</span>
+        <h2 style="font-size:clamp(1.3rem,2.4vw,1.8rem)">Rejoignez la communauté InnoVibe sur Discord</h2>
+        <p style="color:var(--on-ink-muted)">Échanges entre jeunes, entrepreneurs et membres de l'équipe, annonces des sessions et des événements, entraide au quotidien.</p>
+      </div>
+      <a class="btn btn-red" href="https://discord.gg/3VVfKVfMs" target="_blank" rel="noopener" data-reveal-child><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="fill:currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>Rejoindre le serveur Discord</a>
+    </div>
+  </div>
+
+  <div class="surface">
+    <div class="wrap sec">
+      <div class="two" data-reveal>
+        <div class="stack" style="gap:16px" data-reveal-child>
+          <span class="kicker">Écrivez-nous</span>
+          <h2>Un message, et nous revenons vers vous</h2>
+          <p class="measure" style="color:var(--muted)">Décrivez votre besoin en quelques lignes. Un membre de l'équipe vous répondra par e-mail ou par WhatsApp.</p>
+          <div class="stack" style="gap:12px;margin-top:8px">
+            <span style="font-weight:700;color:var(--muted);font-size:.9rem">Suivez-nous</span>
+            <div class="socials" data-socials></div>
+          </div>
+        </div>
+        <form class="form" data-form="contact" novalidate data-reveal-child>
+          <div class="fields stack" style="gap:14px">
+            <div class="row">
+              <label>Nom complet<input type="text" id="c-nom" name="nom" autocomplete="name" placeholder="Votre nom"></label>
+              <label>E-mail ou téléphone<input type="text" id="c-mail" name="contact" placeholder="Pour vous répondre"></label>
+            </div>
+            <label>Sujet
+              <select id="c-sujet" name="sujet">
+                <option>Formation (Academy)</option>
+                <option>Coaching, masterclass, ateliers</option>
+                <option>Conseil et accompagnement (Consult)</option>
+                <option>Stage, projet pilote, initiative communautaire</option>
+                <option>Partenariat, sponsoring, parrainage</option>
+                <option>Autre</option>
+              </select>
+            </label>
+            <label>Message<textarea id="c-msg" name="message" placeholder="Décrivez votre besoin…"></textarea></label>
+            <div><button class="btn btn-red" type="submit">Envoyer le message</button></div>
+          </div>
+          <div class="ok" role="status">Merci, votre message est bien noté. <em>(Maquette : ce formulaire n'est pas encore connecté.)</em></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ ESPACE APPRENANT (porte e-learning) ============ -->
+<section class="view" id="view-espace" data-view="espace">
+  <div class="ink grain on-ink sec-tight">
+    <div class="wrap stack page-head" style="gap:16px">
+      <span class="kicker">Espace apprenant</span>
+      <h1 style="font-size:clamp(2.1rem,4.6vw,3.5rem)">Votre porte d'entrée vers l'e-learning InnoVibe</h1>
+      <p class="lede">Suivre ses formations en ligne, retrouver ses supports, mesurer sa progression et obtenir ses attestations. La plateforme est en préparation : cette page deviendra la porte de connexion.</p>
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="gate" data-reveal>
+      <div class="stack" style="gap:18px" data-reveal-child>
+        <span class="kicker">Ce que vous y trouverez</span>
+        <h2>Un seul compte pour tout votre parcours</h2>
+        <ul class="offers" style="margin-top:4px">
+          <li><span class="gem"></span><span><strong>Formations en ligne</strong> de l'Academy, en groupe ou en autonomie, à partir de 50 $ par programme.</span></li>
+          <li><span class="gem"></span><span><strong>Supports et replays</strong> des masterclass, ateliers et conférences du Coaching.</span></li>
+          <li><span class="gem"></span><span><strong>Progression et attestations</strong> : vos modules suivis, vos résultats, vos certificats à télécharger.</span></li>
+          <li><span class="gem"></span><span><strong>Communauté</strong> : échanges avec les autres apprenants et l'équipe InnoVibe.</span></li>
+        </ul>
+        <p class="measure" style="color:var(--muted);font-size:.95rem">En attendant l'ouverture, les formations collectives gratuites se tiennent en présentiel à Kinshasa. Laissez vos coordonnées sur la page Programmes pour être prévenu.</p>
+      </div>
+      <div class="card gate-card" data-reveal-child>
+        <div class="gate-head">
+          <img class="logo-dark" src="img/logo.png" alt="InnoVibe" width="330" height="144">
+          <img class="logo-light" src="img/logo_light.png" alt="InnoVibe" width="330" height="144">
+          <h3>Connexion à l'espace apprenant</h3>
+          <p class="gate-preview"><span class="gem"></span>Aperçu de la future page de connexion. La connexion sera activée à l'ouverture de la plateforme : ne saisissez pas de vrai mot de passe ici.</p>
+        </div>
+        <form class="form" data-form="login" novalidate>
+          <div class="fields stack" style="gap:14px">
+            <label>Adresse e-mail ou numéro de téléphone<input type="text" id="l-id" name="identifiant" autocomplete="username" placeholder="vous@exemple.cd ou +243 …"></label>
+            <label>Mot de passe<input type="password" id="l-pw" name="motdepasse" autocomplete="current-password" placeholder="••••••••"></label>
+            <div class="gate-row"><label class="check"><input type="checkbox" id="l-rem" name="rester"> Rester connecté</label><a href="#espace" class="gate-link">Mot de passe oublié ?</a></div>
+            <button class="btn btn-red" type="submit" style="justify-content:center">Se connecter</button>
+            <p class="hint" style="text-align:center">Pas encore de compte ? <a href="#espace" class="gate-link">Créer un compte</a></p>
+          </div>
+          <div class="ok" role="status">La plateforme e-learning ouvrira prochainement : la connexion sera activée à ce moment-là. <em>(Maquette : ce formulaire n'est pas connecté.)</em></div>
+        </form>
+        <p class="gate-note">Vos identifiants ne sont jamais partagés. Connexion sécurisée dès l'ouverture de la plateforme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOMMET ============ -->
+<section class="view" id="view-sommet" data-view="sommet">
+  <div class="sie-hero ink grain on-ink" id="sieHero">
+    <div class="aurora" aria-hidden="true"><i></i></div>
+    <div class="wrap">
+      <div class="sie-copy">
+        <span class="kicker" data-s="k">Organisé par InnoVibe à Kinshasa</span>
+        <div class="sie" style="margin-top:12px" aria-label="SIE"><span class="w"><span>S</span></span><span class="w"><span>I</span></span><span class="w"><span>E</span></span></div>
+        <span class="ed" data-s="e">1ère édition</span>
+        <h1 data-s="t">Sommet de l'Innovation et de l'Entrepreneuriat</h1>
+        <div class="theme" data-s="t">
+          <span class="lab">Thème</span>
+          <b>Afrique Innovante</b>
+          <i>« Oser l'innovation, créer la valeur, transformer l'Afrique »</i>
+        </div>
+        <div class="countdown" id="countdown" data-s="c" aria-label="Compte à rebours jusqu'au sommet">
+          <div><b id="cd-d">—</b><span>jours</span></div>
+          <div><b id="cd-h">—</b><span>heures</span></div>
+          <div><b id="cd-m">—</b><span>minutes</span></div>
+          <div><b id="cd-s">—</b><span>secondes</span></div>
+        </div>
+        <p class="countdown-note" data-s="c" id="cdNote">avant l'ouverture de la conférence, samedi 12 décembre 2026 à 10h</p>
+        <div class="cta-row" data-s="c">
+          <a class="btn btn-red" href="#sommet-participer">Participer <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="#sommet-partenaires">Devenir partenaire du sommet</a>
+        </div>
+      </div>
+      <img class="poster" data-parallax="6" data-s="p" src="img/sie_affiche.jpg" alt="Affiche officielle : SIE, 1ère édition, 12 décembre 2026, Grand Tambour, Kinshasa" width="380" height="581">
+    </div>
+  </div>
+
+  <div class="wrap sec">
+    <div class="sec-head" style="margin-bottom:24px" data-reveal>
+      <span class="kicker" data-reveal-child>Informations pratiques</span>
+      <h2 data-reveal-child>Rendez-vous le 12 décembre</h2>
+    </div>
+    <div class="info" data-reveal>
+      <div class="card" data-reveal-child><span class="lab">Date</span><b>Samedi 12 décembre 2026</b><span>Ouverture des portes à 7h</span></div>
+      <div class="card" data-reveal-child><span class="lab">Conférence</span><b>10h – 15h</b><span>Grand Tambour, Centre Culturel et Artistique pour les Pays de l'Afrique Centrale, Kinshasa</span></div>
+      <div class="card" data-reveal-child><span class="lab">Soirée de gala</span><b>À partir de 20h</b><span>Roméo Golf, Kinshasa, sur invitation</span></div>
+      <div class="card" data-reveal-child><span class="lab">Thème</span><b>Afrique Innovante</b><span>Oser l'innovation, créer la valeur, transformer l'Afrique</span></div>
+      <div class="card" data-reveal-child><span class="lab">Public</span><b>Plusieurs milliers de participants</b><span>Jeunes, entrepreneurs, décideurs, partenaires, institutions</span></div>
+      <div class="card" data-reveal-child><span class="lab">Infoline</span><b>+243 844 498 497</b><span>Également sur WhatsApp</span></div>
+    </div>
+  </div>
+
+  <div class="surface">
+    <div class="wrap sec">
+      <div class="sec-head" style="margin-bottom:24px" data-reveal>
+        <span class="kicker" data-reveal-child>Au programme</span>
+        <h2 data-reveal-child>Une journée pour connecter talents, idées et opportunités</h2>
+      </div>
+      <ul class="prog-list" data-reveal>
+        <li data-reveal-child><span class="gem"></span>Cérémonie officielle et discours d'ouverture</li>
+        <li data-reveal-child><span class="gem"></span>Panels sur l'innovation et l'entrepreneuriat en Afrique</li>
+        <li data-reveal-child><span class="gem"></span>Présentations et démonstrations</li>
+        <li data-reveal-child><span class="gem"></span>Signature de partenariats</li>
+        <li data-reveal-child><span class="gem"></span>Stands et espace partenaires</li>
+        <li data-reveal-child><span class="gem"></span>Rencontres B2B</li>
+        <li data-reveal-child><span class="gem"></span>Interviews et couverture média</li>
+        <li data-reveal-child><span class="gem"></span>Activités des partenaires</li>
+        <li data-reveal-child><span class="gem"></span>Soirée de gala au Roméo Golf</li>
+      </ul>
+      <div class="stack" style="gap:14px;margin-top:36px" data-reveal>
+        <span class="kicker" data-reveal-child>Sous-thèmes</span>
+        <div class="themes" data-reveal-child><span>Innovation</span><span>Entrepreneuriat</span><span>Technologie</span><span>Investissement</span><span>Leadership</span><span>Impact</span></div>
+      </div>
+      <p class="note" style="margin-top:22px;font-size:.9rem;color:var(--muted)">Le programme détaillé et les intervenants seront annoncés sur cette page et sur nos réseaux.</p>
+    </div>
+  </div>
+
+  <div class="wrap sec" id="sommet-participer">
+    <div class="two" data-reveal>
+      <div class="stack" style="gap:16px" data-reveal-child>
+        <span class="kicker">Participer</span>
+        <h2>Les inscriptions ouvrent bientôt</h2>
+        <p class="measure" style="color:var(--muted)">La billetterie de la conférence sera ouverte prochainement. Laissez-nous vos coordonnées pour être prévenu en premier et recevoir le programme dès sa publication.</p>
+        <p class="measure" style="color:var(--muted)">Infoline et WhatsApp : <strong style="color:var(--fg);user-select:all">+243 844 498 497</strong></p>
+      </div>
+      <form class="form" data-form="sie" novalidate data-reveal-child>
+        <div class="fields stack" style="gap:14px">
+          <div class="row">
+            <label>Nom complet<input type="text" id="e-nom" name="nom" autocomplete="name" placeholder="Votre nom"></label>
+            <label>Téléphone / WhatsApp<input type="tel" id="e-tel" name="tel" autocomplete="tel" placeholder="+243 …"></label>
+          </div>
+          <label>Adresse e-mail (facultatif)<input type="email" id="e-mail" name="email" autocomplete="email" placeholder="vous@exemple.cd"></label>
+          <label>Vous êtes
+            <select id="e-profil" name="profil">
+              <option>Jeune / étudiant</option>
+              <option>Entrepreneur ou porteur de projet</option>
+              <option>Professionnel / cadre</option>
+              <option>Entreprise, ONG ou institution</option>
+              <option>Média</option>
+            </select>
+          </label>
+          <div><button class="btn btn-red" type="submit">Me prévenir de l'ouverture</button></div>
+        </div>
+        <div class="ok" role="status">Merci ! Vous serez parmi les premiers informés. <em>(Maquette : ce formulaire n'est pas encore connecté.)</em></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="ink grain on-ink" id="sommet-partenaires">
+    <div class="wrap sec">
+      <div class="gala" data-reveal>
+        <div class="stack" style="gap:16px" data-reveal-child>
+          <span class="kicker">Partenaires du sommet</span>
+          <h2>Associez votre marque à la première édition</h2>
+          <p class="lede">Le sommet réunit en une journée des jeunes, des entrepreneurs, des décideurs et des institutions autour de l'innovation africaine. Les partenaires de la première édition bénéficient d'une visibilité et d'une place qu'aucune édition suivante n'offrira.</p>
+          <ul class="offers" style="margin-top:4px">
+            <li><span class="gem"></span><span>Visibilité sur les supports du sommet, sur scène et dans l'espace partenaires</span></li>
+            <li><span class="gem"></span><span>Prise de parole, signature de partenariat ou remise de distinction</span></li>
+            <li><span class="gem"></span><span>Rencontres B2B et accès aux talents formés par InnoVibe</span></li>
+            <li><span class="gem"></span><span>Contenus photo et vidéo, et rapport d'impact après l'événement</span></li>
+          </ul>
+          <div class="cta-row" style="margin-top:8px">
+            <a class="btn btn-red" href="#contact">Demander le dossier de partenariat</a>
+            <button class="btn btn-ghost copy-btn" type="button" data-copy="partenariats@innovibe.cd">Copier partenariats@innovibe.cd</button>
+          </div>
+        </div>
+        <img class="poster2" data-parallax="6" data-reveal-child src="img/sie_affiche_noir.jpg" alt="Affiche du SIE, version fond noir" width="420" height="642">
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ink grain on-ink">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="img/logo_light.png" alt="InnoVibe — Inspirez votre succès" width="330" height="144">
+        <p>Entreprise congolaise d'innovation, d'entrepreneuriat et de développement des compétences. Formation, coaching, conseil stratégique et mise en relation.</p>
+        <div class="socials" data-socials style="margin-top:18px"></div>
+      </div>
+      <div>
+        <h4>InnoVibe</h4>
+        <ul><li><a href="#a-propos">Qui sommes-nous</a></li><li><a href="#poles">Nos pôles</a></li><li><a href="#programmes">Programmes</a></li><li><a href="#partenaires">Partenaires</a></li><li><a href="#sommet">Sommet 2026</a></li><li><a href="#espace" data-elearning>Espace apprenant (e-learning)</a></li></ul>
+      </div>
+      <div>
+        <h4>Nos pôles</h4>
+        <ul><li><a href="#academy">InnoVibe Academy</a></li><li><a href="#coaching">InnoVibe Coaching</a></li><li><a href="#consult">InnoVibe Consult</a></li><li><a href="#impact">Impact &amp; Développement</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li><span class="val">Contact@innovibe.cd</span></li><li><span class="val">partenariats@innovibe.cd</span></li><li><span class="val">+243 844 498 497</span></li><li>Kinshasa, RDC</li><li><a href="#contact">Formulaire de contact</a></li><li><a href="https://discord.gg/3VVfKVfMs" target="_blank" rel="noopener">Communauté Discord</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 InnoVibe. Tous droits réservés. Kinshasa, République Démocratique du Congo.</span>
+      <span>www.innovibe.cd — version de prévisualisation (maquette), formulaires non connectés</span>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  var G = window.gsap || null;
+  var ST = window.ScrollTrigger || null;
+  if (G && ST) { G.registerPlugin(ST); }
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motion = !!(G && ST) && !reduce;       // GSAP + ScrollTrigger present and motion allowed
+  // Safety net: if anything goes wrong, make sure nothing stays hidden by an animation.
+  function revealAll(){
+    try {
+      if (G) G.killTweensOf('*');
+      document.querySelectorAll('[style]').forEach(function(el){
+        if (el.closest('.view') || el.closest('.topbar') || el.classList.contains('facts') || el.classList.contains('marquee')) {
+          el.style.opacity=''; el.style.transform=''; el.style.visibility='';
+        }
+      });
+      document.querySelectorAll('.step .bar i').forEach(function(b){ b.style.transform='none'; });
+      document.querySelectorAll('.view').forEach(function(v){ v.style.opacity=''; v.style.transform=''; });
+    } catch(e){}
+  }
+  window.addEventListener('error', function(){ revealAll(); });
+  // Watchdog: a few seconds after load, anything still invisible in the active view is shown.
+  setTimeout(function(){
+    var act = document.querySelector('.view.active'); if (!act) return;
+    act.querySelectorAll('[data-reveal-child],[data-reveal],[data-h],[data-s],.fact,.marquee').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0 && getComputedStyle(el).opacity === '0') { el.style.opacity=''; el.style.transform=''; }
+    });
+  }, 4500);
+  var fine = window.matchMedia('(pointer:fine)').matches;
+
+  /* ---------- Static content ---------- */
+  var ICONS = {"siInstagram": "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077", "siFacebook": "M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z", "siTiktok": "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z", "siX": "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z", "siLinkedin": "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z", "siDiscord": "M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z", "siWhatsapp": "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"};
+  var SOCIALS = [
+    ['Instagram','siInstagram','https://www.instagram.com/innovibe96'],
+    ['Facebook','siFacebook','https://www.facebook.com/share/1BURzU9Kie/'],
+    ['TikTok','siTiktok','https://www.tiktok.com/@innovibe96'],
+    ['X','siX','https://x.com/innovibe96'],
+    ['LinkedIn','siLinkedin','https://www.linkedin.com/'],
+    ['Discord','siDiscord','https://discord.gg/3VVfKVfMs']
+  ];
+  /* Espace apprenant (e-learning) : mettre ici l'adresse de la plateforme quand elle existera,
+     ex. 'https://learn.innovibe.cd'. Tant que c'est vide, la page « Espace apprenant » sert de porte d'entrée. */
+  var ELEARNING_URL = '';
+  if (ELEARNING_URL) { document.querySelectorAll('[data-elearning]').forEach(function(a){ a.setAttribute('href', ELEARNING_URL); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); }); }
+  document.querySelectorAll('[data-socials]').forEach(function(box){
+    box.innerHTML = SOCIALS.map(function(s){
+      return '<a href="'+s[2]+'" target="_blank" rel="noopener" aria-label="InnoVibe sur '+s[0]+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+ICONS[s[1]]+'"/></svg>'+s[0]+'</a>';
+    }).join('');
+  });
+
+  var PROGS = [
+    ['academy','Entrepreneuriat et création d’entreprise',['Créer son entreprise en RDC : démarches, statuts, fiscalité de base','Rédiger un business plan simple et convaincant','Trouver et valider une idée d’affaire','Gérer sa trésorerie et ses premiers comptes'],'Collectif gratuit, en ligne ou privé'],
+    ['academy','Compétences métiers et techniques',['Techniques de vente et négociation commerciale','Gestion de stock et logistique de base','Notions de comptabilité pour non-comptables','Rédaction administrative et professionnelle'],'Collectif gratuit, en ligne ou privé'],
+    ['academy','Compétences numériques',['Initiation à l’ordinateur et à Internet','Marketing digital et réseaux sociaux pour petites entreprises','Vente en ligne et e-commerce (Facebook, WhatsApp Business)','Initiation à la bureautique (Word, Excel, Canva)'],'Collectif gratuit, en ligne ou privé'],
+    ['academy','Leadership et savoir-être professionnel',['Prise de parole en public','Gestion du temps et productivité personnelle','Rédiger un CV et réussir un entretien d’embauche','Communication interpersonnelle et travail d’équipe'],'Collectif gratuit, en ligne ou privé'],
+    ['coaching','Coaching individuel',['Coaching de carrière et transition professionnelle','Confiance en soi et affirmation personnelle','Orientation des jeunes diplômés'],'Séances individuelles, présentiel ou en ligne'],
+    ['coaching','Coaching pour porteurs de projets',['Clarifier sa vision entrepreneuriale','Préparation à la levée de fonds ou à un concours de plans d’affaires','Résilience face à l’échec entrepreneurial'],'Séances individuelles ou en petit groupe'],
+    ['coaching','Masterclass et ateliers mensuels',['Le leadership au féminin','Gérer le stress et la charge mentale de l’entrepreneur','Construire son réseau professionnel efficacement','Prendre des décisions sous incertitude'],'Chaque mois, présentiel et en ligne, abonnement possible'],
+    ['coaching','Coaching en entreprise',['Coaching de managers de première ligne','Cohésion d’équipe et gestion des conflits internes','Coaching de dirigeants de PME'],'Sur mesure, en entreprise'],
+    ['consult','Structuration d’entreprise',['Formalisation juridique et statuts','Mise en place d’une gouvernance claire','Structuration financière et tableaux de bord de gestion'],'Mission sur devis'],
+    ['consult','Stratégie et croissance',['Diagnostic stratégique et plan de développement','Stratégie d’expansion ou de diversification','Positionnement et stratégie concurrentielle'],'Mission sur devis'],
+    ['consult','Ressources humaines et organisation',['Structuration RH : organigramme, fiches de poste, politique salariale','Recrutement et intégration','Culture d’entreprise et gestion du changement'],'Mission sur devis'],
+    ['consult','Finance et gestion',['Mise en place d’outils de suivi budgétaire','Préparation à la recherche de financement','Optimisation des coûts et de la rentabilité'],'Mission sur devis'],
+    ['consult','Projets d’impact communautaire',['Conception et évaluation de projets à impact social','Structuration de programmes de développement local','Accompagnement de coopératives et associations'],'Pour ONG, institutions et bailleurs'],
+    ['impact','Entrepreneuriat digital',['E-commerce et vente en ligne pour artisans locaux','Création de contenu et médias numériques'],'Projets pilotes et initiatives'],
+    ['impact','Agriculture et agribusiness',['Transformation et commercialisation de produits agricoles locaux','Agriculture urbaine et péri-urbaine'],'Projets pilotes et initiatives'],
+    ['impact','Éducation et compétences',['Alphabétisation numérique dans les quartiers','Clubs de mentorat scolaire et pré-professionnel'],'Initiatives communautaires'],
+    ['impact','Environnement et économie créative',['Recyclage et économie circulaire','Artisanat, mode et industries culturelles locales'],'Projets pilotes et initiatives'],
+    ['impact','Inclusion et impact social',['Insertion professionnelle des jeunes déscolarisés','Autonomisation économique des femmes','Inclusion des personnes en situation de handicap'],'Initiatives communautaires']
+  ];
+  var LABEL = {academy:'Academy',coaching:'Coaching',consult:'Consult',impact:'Impact & Développement'};
+  var grid = document.getElementById('progGrid');
+  function progHTML(f){
+    return PROGS.filter(function(p){return f==='all'||p[0]===f;}).map(function(p){
+      return '<div class="card prog"><span class="tag">'+LABEL[p[0]]+'</span><h3>'+p[1]+'</h3><ul>'+p[2].map(function(i){return '<li><span class="gem"></span><span>'+i+'</span></li>';}).join('')+'</ul><span class="status">'+p[3]+'</span></div>';
+    }).join('');
+  }
+  grid.innerHTML = progHTML('all');
+  document.getElementById('filters').addEventListener('click',function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false');});
+    b.setAttribute('aria-pressed','true');
+    var f = b.getAttribute('data-f');
+    if (motion) {
+      G.to(grid.children, {opacity:0, y:8, duration:.18, stagger:.015, ease:'power1.in', onComplete:function(){
+        grid.innerHTML = progHTML(f);
+        G.from(grid.children, {opacity:0, y:16, duration:.5, stagger:.045, ease:'power2.out', clearProps:'all'});
+        bindCards(grid);
+      }});
+    } else { grid.innerHTML = progHTML(f); bindCards(grid); }
+  });
+
+  /* ---------- Card pointer sheen ---------- */
+  function bindCards(root){
+    if(!fine) return;
+    (root||document).querySelectorAll('.card').forEach(function(c){
+      if (c.__bound) return; c.__bound = true;
+      c.addEventListener('pointermove', function(e){
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+        c.style.setProperty('--my', ((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+      });
+    });
+  }
+  bindCards(document);
+
+  /* ---------- Header: scrolled state + reading progress ---------- */
+  var topbar = document.getElementById('topbar'), progress = document.getElementById('progress');
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.pageYOffset || document.documentElement.scrollTop;
+      topbar.classList.toggle('scrolled', y > 24);
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')';
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+
+  /* ---------- Hero: the prism ---------- */
+  var heroPlayed = false;
+  function playHero(){
+    if (heroPlayed || !motion) return; heroPlayed = true;
+    var facets = G.utils.toArray('#prismSvg .facet');
+    var tl = G.timeline({defaults:{ease:'expo.out'}});
+    tl.from('.topbar .brand, .topbar .nav > a, .topbar .burger', {y:-10, opacity:0, duration:.7, stagger:.04}, 0);
+    tl.from(facets, {
+      x:function(i,el){return +el.getAttribute('data-dx');},
+      y:function(i,el){return +el.getAttribute('data-dy');},
+      rotation:function(i,el){return +el.getAttribute('data-r');},
+      transformOrigin:'50% 50%', opacity:0, duration:1.3, stagger:.11
+    }, .1);
+    tl.from('#prism .halo', {scale:.6, opacity:0, duration:1.6, transformOrigin:'50% 50%'}, .2);
+    tl.from('#prism .ghost', {scale:.85, opacity:0, duration:1.8, transformOrigin:'50% 50%'}, .3);
+    tl.from('#heroTitle .w > span', {yPercent:112, duration:1.05, stagger:.085}, .25);
+    tl.from('[data-h="k"]', {y:14, opacity:0, duration:.8}, .35);
+    tl.from('[data-h="l"]', {y:18, opacity:0, duration:.9}, .7);
+    tl.from('[data-h="c"]', {y:16, opacity:0, duration:.8, stagger:.08}, .85);
+    tl.from('[data-h="m"]', {x:-10, opacity:0, duration:.7, stagger:.07}, 1.0);
+    tl.from('.facts .fact', {y:22, opacity:0, duration:.9, stagger:.07, clearProps:'opacity,transform'}, 1.05);
+    tl.from('.marquee', {opacity:0, duration:1}, 1.3);
+    tl.add(function(){ G.set(facets, {clearProps:'opacity'}); countAll(document.querySelector('.facts')); }, 1.9);
+
+    // Idle life: slow float, facets breathing, periodic light sweep
+    G.to('#prismSvg', {y:-10, duration:5.5, ease:'sine.inOut', yoyo:true, repeat:-1, delay:1.6});
+    facets.forEach(function(f,i){ G.to(f, {scale:1.012, transformOrigin:'50% 50%', duration:3.2 + i*.45, ease:'sine.inOut', yoyo:true, repeat:-1, delay:1.6 + i*.3}); });
+    G.fromTo('#sheen', {x:-80}, {x:820, duration:1.7, ease:'power2.inOut', repeat:-1, repeatDelay:5.2, delay:2.2});
+
+    // Pointer parallax on desktop
+    if (fine) {
+      var hero = document.getElementById('hero');
+      var toX = G.quickTo('#prism', 'x', {duration:.9, ease:'power3.out'});
+      var toY = G.quickTo('#prism', 'y', {duration:.9, ease:'power3.out'});
+      var toR = G.quickTo('#prism', 'rotation', {duration:1.1, ease:'power3.out'});
+      hero.addEventListener('pointermove', function(e){
+        var r = hero.getBoundingClientRect();
+        var nx = (e.clientX - r.left)/r.width*2 - 1, ny = (e.clientY - r.top)/r.height*2 - 1;
+        toX(nx*14); toY(ny*10); toR(nx*2.2);
+        hero.style.setProperty('--gx', ((nx+1)/2*100).toFixed(1)+'%'); hero.style.setProperty('--gy', ((ny+1)/2*100).toFixed(1)+'%');
+      });
+      hero.addEventListener('pointerleave', function(){ toX(0); toY(0); toR(0); });
+    }
+  }
+
+  /* ---------- Count-up numbers ---------- */
+  function countAll(root){
+    (root||document).querySelectorAll('[data-count]').forEach(function(el){
+      if (el.__counted) return; el.__counted = true;
+      if (!motion) return;
+      var end = +el.getAttribute('data-count'), o = {v:0};
+      G.to(o, {v:end, duration:1.2, ease:'expo.out', onUpdate:function(){ el.textContent = Math.round(o.v); }});
+    });
+  }
+
+  /* ---------- Scroll reveals (per view, once) ---------- */
+  var triggers = [];
+  function killTriggers(){ triggers.forEach(function(t){ t.kill(); }); triggers = []; }
+  function initReveals(view){
+    if (!motion) return;
+    var vh = window.innerHeight;
+    view.querySelectorAll('[data-reveal]').forEach(function(sec){
+      if (sec.__revealed) return;
+      var top = sec.getBoundingClientRect().top;
+      var kids = sec.querySelectorAll('[data-reveal-child]');
+      var targets = kids.length ? Array.prototype.slice.call(kids) : [sec];
+      if (top < vh * 0.88) { sec.__revealed = true; return; }  // already in view: stays visible, no hide
+      var tw = G.from(targets, {opacity:0, y:26, duration:.7, stagger:.08, ease:'power2.out', paused:true, clearProps:'opacity,transform',
+        onComplete:function(){ sec.__revealed = true; countAll(sec); }});
+      triggers.push(ST.create({trigger:sec, start:'top 86%', once:true, onEnter:function(){ tw.play(); }}));
+    });
+    // Steps: progress bars draw in sequence
+    view.querySelectorAll('[data-steps]').forEach(function(steps){
+      if (steps.__done) return;
+      var bars = steps.querySelectorAll('.bar i');
+      var tw = G.to(bars, {scaleX:1, duration:.9, stagger:.22, ease:'power2.inOut', paused:true, onComplete:function(){ steps.__done = true; }});
+      if (steps.getBoundingClientRect().top < vh*0.88) { tw.play(); return; }
+      triggers.push(ST.create({trigger:steps, start:'top 80%', once:true, onEnter:function(){ tw.play(); }}));
+    });
+    // Parallax on decorative posters only
+    view.querySelectorAll('[data-parallax]').forEach(function(img){
+      var amt = +img.getAttribute('data-parallax') || 8;
+      var tw = G.fromTo(img, {yPercent:amt}, {yPercent:-amt, ease:'none', paused:true});
+      triggers.push(ST.create({trigger:img.parentElement, start:'top bottom', end:'bottom top', scrub:.6, animation:tw}));
+    });
+  }
+  // Non-GSAP fallback: steps bars simply show full
+  if (!motion) { document.querySelectorAll('.step .bar i').forEach(function(b){ b.style.transform = 'none'; }); }
+
+  /* ---------- Sommet hero + countdown ---------- */
+  var siePlayed = false;
+  function playSie(){
+    if (siePlayed || !motion) return; siePlayed = true;
+    var tl = G.timeline({defaults:{ease:'expo.out'}});
+    tl.from('#sieHero .sie .w > span', {yPercent:110, duration:1.1, stagger:.09}, 0);
+    tl.from('[data-s="k"]', {y:12, opacity:0, duration:.7}, .1);
+    tl.from('[data-s="e"]', {scale:.7, opacity:0, duration:.7, ease:'back.out(2)', transformOrigin:'0 50%'}, .55);
+    tl.from('[data-s="t"]', {y:18, opacity:0, duration:.9, stagger:.1}, .65);
+    tl.from('[data-s="c"]', {y:16, opacity:0, duration:.8, stagger:.08}, .95);
+    tl.from('[data-s="p"]', {y:40, opacity:0, rotation:2, duration:1.3, transformOrigin:'50% 100%', clearProps:'opacity'}, .3);
+  }
+  var target = new Date('2026-12-12T10:00:00+01:00').getTime();
+  var cdEls = {d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
+  var cdNote = document.getElementById('cdNote');
+  function pad(n){ return (n<10?'0':'')+n; }
+  function tick(){
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      cdEls.d.textContent='0'; cdEls.h.textContent='00'; cdEls.m.textContent='00'; cdEls.s.textContent='00';
+      cdNote.textContent = (Date.now() - target < 36e5*12) ? 'La conférence est en cours. Bienvenue au Grand Tambour.' : 'La première édition a eu lieu le 12 décembre 2026. Merci à tous les participants et partenaires.';
+      return;
+    }
+    var d = Math.floor(diff/864e5), h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+    cdEls.d.textContent = d; cdEls.h.textContent = pad(h); cdEls.m.textContent = pad(m); cdEls.s.textContent = pad(s);
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- Router with page transitions ---------- */
+  var VIEWS = ['accueil','a-propos','poles','programmes','partenaires','contact','espace','sommet'];
+  var SUB = {academy:'poles',coaching:'poles',consult:'poles',impact:'poles','sommet-participer':'sommet','sommet-partenaires':'sommet'};
+  var nav = document.getElementById('nav'), burger = document.getElementById('burger');
+  function closeNav(){ nav.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click',function(){ var o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o?'true':'false'); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeNav(); });
+
+  var busy = false;
+  function parse(){
+    var h = (location.hash||'#accueil').replace('#','');
+    var view = VIEWS.indexOf(h)>=0 ? h : (SUB[h] || 'accueil');
+    return {h:h, view:view};
+  }
+  function setNav(view){
+    document.querySelectorAll('[data-nav]').forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-nav')===view && !a.classList.contains('btn-red')); });
+    document.title = (view==='sommet' ? 'SIE 2026 — ' : view==='espace' ? 'Espace apprenant — ' : '') + 'InnoVibe';
+  }
+  function scrollToTarget(h, view, smooth){
+    var target = (h!==view) ? document.getElementById(h) : null;
+    if (target) {
+      var y = target.getBoundingClientRect().top + window.pageYOffset - 84;
+      window.scrollTo({top:y, behavior: smooth && !reduce ? 'smooth' : 'auto'});
+    } else { window.scrollTo({top:0, behavior:'auto'}); }
+  }
+  function afterShow(view, el){
+    if (view==='accueil') playHero();
+    if (view==='sommet') playSie();
+    initReveals(el);
+    if (ST) ST.refresh();
+    onScroll();
+  }
+  function route(first){
+    var p = parse(), view = p.view, h = p.h;
+    closeNav();
+    var next = document.querySelector('[data-view="'+view+'"]');
+    var prev = document.querySelector('.view.active');
+    setNav(view);
+    if (first || !motion || prev === next) {
+      if (prev !== next) { killTriggers(); prev.classList.remove('active'); next.classList.add('active'); }
+      scrollToTarget(h, view, !first && prev === next);
+      afterShow(view, next);
+      return;
+    }
+    if (busy) return; busy = true;
+    killTriggers();
+    G.to(prev, {opacity:0, y:-10, duration:.28, ease:'power2.in', onComplete:function(){
+      prev.classList.remove('active'); G.set(prev, {clearProps:'all'});
+      next.classList.add('active');
+      scrollToTarget(h, view, false);
+      G.fromTo(next, {opacity:0, y:18}, {opacity:1, y:0, duration:.6, ease:'expo.out', clearProps:'all', onComplete:function(){ busy=false; }});
+      afterShow(view, next);
+    }});
+  }
+  function safeRoute(first){ try { route(first); } catch(e){ busy=false; revealAll(); try{ var v=parse(); document.querySelectorAll('.view').forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-view')===v.view); }); }catch(err){} } }
+  window.addEventListener('hashchange', function(){ safeRoute(false); });
+  safeRoute(true);
+
+  /* ---------- Forms (maquette : non connectés) ---------- */
+  document.querySelectorAll('form[data-form]').forEach(function(f){
+    f.addEventListener('submit', function(e){ e.preventDefault(); f.classList.add('sent'); });
+  });
+
+  /* ---------- Copy buttons ---------- */
+  var toast = document.getElementById('toast'), tt;
+  function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('show'); }, 2200); }
+  document.querySelectorAll('.copy-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      var txt = b.getAttribute('data-copy');
+      var done = function(){ showToast('Copié : '+txt); };
+      var fail = function(){
+        try { var r = document.createRange(); var el = b.parentElement.querySelector('.val') || b.previousElementSibling; r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); showToast('Sélectionné, appuyez pour copier'); } catch(err){ showToast(txt); }
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, fail); } else { fail(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
