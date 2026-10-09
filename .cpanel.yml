@@ -1,8 +1,8 @@
 ---
-# Déploiement automatique cPanel : copie le site vitrine (dossier site/) dans public_html.
-# Dans cPanel > Git Version Control > Manage > Pull or Deploy > "Deploy HEAD Commit".
+# Déploiement automatique cPanel : copie le site vitrine (dossier site/) dans la racine du domaine innovibe.cd.
+# Dans cPanel > Git Version Control > Manage > Pull or Deploy > "Update from Remote" puis "Deploy HEAD Commit".
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
+    - export DEPLOYPATH=$HOME/innovibe.cd/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R site/. $DEPLOYPATH
