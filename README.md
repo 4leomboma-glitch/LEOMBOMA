@@ -4,7 +4,7 @@ Deux maquettes front-end, prêtes à être hébergées telles quelles ou intégr
 
 | Dossier | Contenu | État |
 |---|---|---|
-| `site/` | Site vitrine InnoVibe : accueil, qui sommes-nous, pôles, programmes, partenaires, contact, espace apprenant (porte d'entrée), page du Sommet 2026 | Maquette validée en interne, formulaires non connectés |
+| `site/` | Site vitrine InnoVibe : accueil, qui sommes-nous, pôles, programmes, partenaires, contact, espace apprenant (porte d'entrée), page du Sommet 2026 | Site en ligne, formulaires connectés (envoi à Contact@innovibe.cd) |
 | `elearning/` | Espace apprenant InnoVibe Academy : connexion, tableau de bord, catalogue, programme, leçons, quiz, attestations, paiement mobile money, espace formateur | Maquette fonctionnelle avec données d'exemple, aucun serveur |
 | `docs/` | Notes de passation pour l'équipe technique (déploiement, réglages, sécurité) | — |
 
